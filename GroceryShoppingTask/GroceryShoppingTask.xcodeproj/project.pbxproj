@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E833DCA24B5EB730057D502 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DC924B5EB730057D502 /* NetworkHelper.swift */; };
+		2E833DCC24B5EC1D0057D502 /* GroceryAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DCB24B5EC1D0057D502 /* GroceryAPIConfig.swift */; };
+		2E833DCE24B601DE0057D502 /* ShoppingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DCD24B601DE0057D502 /* ShoppingPresenter.swift */; };
+		2E833DD024B602B80057D502 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DCF24B602B80057D502 /* Products.swift */; };
+		2E833DD324B608D30057D502 /* ShoppingPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DD224B608D30057D502 /* ShoppingPresenterProtocol.swift */; };
 		2EDC3A8924B4FAB600944A3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDC3A8824B4FAB600944A3D /* AppDelegate.swift */; };
 		2EDC3A8B24B4FAB600944A3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDC3A8A24B4FAB600944A3D /* SceneDelegate.swift */; };
 		2EDC3A9024B4FAB600944A3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC3A8E24B4FAB600944A3D /* Main.storyboard */; };
@@ -33,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E833DC924B5EB730057D502 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		2E833DCB24B5EC1D0057D502 /* GroceryAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryAPIConfig.swift; sourceTree = "<group>"; };
+		2E833DCD24B601DE0057D502 /* ShoppingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingPresenter.swift; sourceTree = "<group>"; };
+		2E833DCF24B602B80057D502 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		2E833DD224B608D30057D502 /* ShoppingPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingPresenterProtocol.swift; sourceTree = "<group>"; };
 		2EDC3A8524B4FAB500944A3D /* GroceryShoppingTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryShoppingTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EDC3A8824B4FAB600944A3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EDC3A8A24B4FAB600944A3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +86,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E833DC824B5EB410057D502 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2E833DC924B5EB730057D502 /* NetworkHelper.swift */,
+				2E833DCB24B5EC1D0057D502 /* GroceryAPIConfig.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2E833DD124B6089B0057D502 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2E833DD224B608D30057D502 /* ShoppingPresenterProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		2EDC3A7C24B4FAB500944A3D = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +126,8 @@
 		2EDC3A8724B4FAB500944A3D /* GroceryShoppingTask */ = {
 			isa = PBXGroup;
 			children = (
+				2E833DD124B6089B0057D502 /* Protocols */,
+				2E833DC824B5EB410057D502 /* Helpers */,
 				2EDC3AAC24B5111900944A3D /* Presenters */,
 				2EDC3AAB24B5110800944A3D /* Views */,
 				2EDC3AAA24B510F700944A3D /* Models */,
@@ -125,6 +154,7 @@
 		2EDC3AAA24B510F700944A3D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2E833DCF24B602B80057D502 /* Products.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -142,6 +172,7 @@
 		2EDC3AAC24B5111900944A3D /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				2E833DCD24B601DE0057D502 /* ShoppingPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -163,7 +194,6 @@
 				8FB9CB4B4B625CB899BEA82E /* Pods-GroceryShoppingTaskTests.debug.xcconfig */,
 				DA290357593B3B3B624664CE /* Pods-GroceryShoppingTaskTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -346,9 +376,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EDC3AB624B5169B00944A3D /* CartViewController.swift in Sources */,
+				2E833DD024B602B80057D502 /* Products.swift in Sources */,
 				2EDC3A8924B4FAB600944A3D /* AppDelegate.swift in Sources */,
+				2E833DCE24B601DE0057D502 /* ShoppingPresenter.swift in Sources */,
 				2EDC3AB424B5168B00944A3D /* ShoppingViewController.swift in Sources */,
 				2EDC3A8B24B4FAB600944A3D /* SceneDelegate.swift in Sources */,
+				2E833DD324B608D30057D502 /* ShoppingPresenterProtocol.swift in Sources */,
+				2E833DCC24B5EC1D0057D502 /* GroceryAPIConfig.swift in Sources */,
+				2E833DCA24B5EB730057D502 /* NetworkHelper.swift in Sources */,
 				2EDC3ABA24B5177E00944A3D /* ShoppingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

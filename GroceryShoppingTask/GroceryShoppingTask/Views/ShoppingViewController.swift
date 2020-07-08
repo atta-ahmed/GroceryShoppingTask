@@ -11,10 +11,13 @@ import UIKit
 class ShoppingViewController: UIViewController {
 
     @IBOutlet weak var shoppingCollectionView: UICollectionView!
+    fileprivate var presenter = ShoppingPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollection()
+        presenter.shoppingDelegate = self
+        presenter.getProducts()
     }
 
     func setupCollection() {
@@ -37,7 +40,7 @@ class ShoppingViewController: UIViewController {
 extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return presenter.products.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -50,4 +53,10 @@ extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewData
     }
 
 
+}
+
+extension ShoppingViewController: ShoppingPresenterProtocol {
+    func onSuccessGetProducts() {
+        shoppingCollectionView.reloadData()
+    }
 }
