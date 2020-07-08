@@ -16,11 +16,9 @@ class ShoppingCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    func setup() {
-        if let image = UIImage(named: "default") {
-            self.imageView.image = image
-        }
-        title.text = "fdfdffdgdfdfggd"
+    func setup(product: Product) {
+        imageView.downloadImageByKF(imagePath: product.imageURL ?? "")
+        title.text = "\(product.name ?? "") - $\(product.pricePerUnit ?? 0)"
     }
 
 

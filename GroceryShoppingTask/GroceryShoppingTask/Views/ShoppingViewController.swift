@@ -46,7 +46,7 @@ extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCell",
                                                          for: indexPath) as? ShoppingCell {
-            cell.setup()
+            cell.setup(product: presenter.products[indexPath.row])
             return cell
         }
         return UICollectionViewCell()
@@ -58,5 +58,23 @@ extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewData
 extension ShoppingViewController: ShoppingPresenterProtocol {
     func onSuccessGetProducts() {
         shoppingCollectionView.reloadData()
+    }
+}
+
+extension ShoppingViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        loadMoreCharacters(scrollView)
+    }
+
+    fileprivate func loadMoreCharacters(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height -
+            scrollView.frame.size.height
+
+        if maximumOffset - currentOffset <= 20.0 {
+            DispatchQueue.main.async {
+                self.presenter.getProducts()
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ class ShoppingPresenter {
     weak var shoppingDelegate: ShoppingPresenterProtocol?
     var offset = 0
     var limit = 10
-    var products: [Products] = []
+    var products: [Product] = []
     
     func getProducts() {
         let params = ["limit": limit,
@@ -21,7 +21,7 @@ class ShoppingPresenter {
         NetworkHelper.request(url: "products", success: successGetProducts , method: .get, paramter: params)
     }
     
-     fileprivate func successGetProducts(response: [Products]){
+     fileprivate func successGetProducts(response: [Product]){
         for product in response {
             products.append(product)
         }

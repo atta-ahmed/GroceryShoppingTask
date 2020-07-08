@@ -8,11 +8,11 @@
 
 import Foundation
 
-class Products: Codable {
+class Product: Codable {
 
     var id: Int?
     var imageURL: String?
     var name: String?
-    var pricPerUnit: String?
+    var pricePerUnit: Double?
 
 }

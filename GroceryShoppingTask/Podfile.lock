@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (4.9.1)
+  - Kingfisher (4.10.1)
 
 DEPENDENCIES:
   - Alamofire
+  - Kingfisher
 
 SPEC REPOS:
   https://cdn.cocoapods.org/:
     - Alamofire
+    - Kingfisher
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
 
-PODFILE CHECKSUM: 44fd4f5b6510002a231c80971f7fd10e61e6eb7a
+PODFILE CHECKSUM: e42429ed0bfac86b9224bef6655e4a2701dd3bcc
 
 COCOAPODS: 1.9.1
