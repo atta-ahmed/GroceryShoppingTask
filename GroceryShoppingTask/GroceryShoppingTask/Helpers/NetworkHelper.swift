@@ -32,8 +32,8 @@ class NetworkHelper {
                     success(response)
 
                 } catch let error {
-
                     print(error)
+                    delegate?.handleFailuer()
                 }
 
             } else if responseObject.result.isFailure {

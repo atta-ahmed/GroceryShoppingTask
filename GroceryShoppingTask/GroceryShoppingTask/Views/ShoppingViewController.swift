@@ -21,7 +21,8 @@ class ShoppingViewController: UIViewController {
     }
 
     func setupCollection() {
-        self.shoppingCollectionView.register(UINib(nibName: "ShoppingCell", bundle: nil), forCellWithReuseIdentifier: "ShoppingCell")
+        self.shoppingCollectionView.register(UINib(nibName: "ShoppingCell", bundle: nil),
+                                             forCellWithReuseIdentifier: "ShoppingCell")
         shoppingCollectionView.delegate = self
         shoppingCollectionView.dataSource = self
         layoutCells()

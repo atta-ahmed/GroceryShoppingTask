@@ -64,6 +64,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kbd-FN-b2o" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="2eZ-xn-Ssh">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -83,12 +84,27 @@
                     <view key="view" contentMode="scaleToFill" id="2Tq-Ed-Z6a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JQ7-6m-mty">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JQ7-6m-mty" firstAttribute="leading" secondItem="umv-vU-83Y" secondAttribute="leading" id="7MJ-6l-dNQ"/>
+                            <constraint firstAttribute="trailing" secondItem="JQ7-6m-mty" secondAttribute="trailing" id="9RX-RA-dZx"/>
+                            <constraint firstItem="JQ7-6m-mty" firstAttribute="top" secondItem="umv-vU-83Y" secondAttribute="top" id="Jw6-fr-g27"/>
+                            <constraint firstItem="umv-vU-83Y" firstAttribute="bottom" secondItem="JQ7-6m-mty" secondAttribute="bottom" id="QfH-Qh-J4z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="umv-vU-83Y"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Cart" image="cart" catalog="system" id="8XA-aO-VDv">
                         <color key="badgeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="cartTableView" destination="JQ7-6m-mty" id="sLy-2h-ZOC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ul-zL-CCa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
