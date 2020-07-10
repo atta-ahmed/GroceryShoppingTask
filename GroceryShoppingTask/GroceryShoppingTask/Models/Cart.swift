@@ -8,8 +8,15 @@
 
 import Foundation
 
-class Cart: Codable {
-    var products: [Product]?
-    var id: Int?
+
+struct Cart: Codable {
+    var id: String?
+    var products: [ProductElement] = []
+    
+}
+
+// MARK: - ProductElement
+struct ProductElement: Codable {
     var quantity: Int?
+    var product: Product?
 }

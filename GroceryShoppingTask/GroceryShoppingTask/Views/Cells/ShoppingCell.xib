@@ -25,10 +25,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ZbQ-2B-9dp">
+                        <rect key="frame" x="114" y="0.0" width="20" height="20"/>
+                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="L3R-02-DzC"/>
+                            <constraint firstAttribute="height" constant="20" id="gpL-gv-wFF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="ZbQ-2B-9dp" secondAttribute="trailing" id="7H4-rJ-4zp"/>
                 <constraint firstItem="lrr-M6-yu5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="9FY-eh-ASP"/>
+                <constraint firstItem="ZbQ-2B-9dp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9lJ-EM-j3L"/>
                 <constraint firstAttribute="bottom" secondItem="lrr-M6-yu5" secondAttribute="bottom" constant="10" id="Khu-tX-XXY"/>
                 <constraint firstItem="uzz-Tl-4l5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vc5-sN-EOV"/>
                 <constraint firstItem="lrr-M6-yu5" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="gVc-od-O9T"/>
@@ -41,6 +59,7 @@
             <size key="customSize" width="134" height="134"/>
             <connections>
                 <outlet property="imageView" destination="uzz-Tl-4l5" id="gH4-aE-flO"/>
+                <outlet property="quintityLabel" destination="ZbQ-2B-9dp" id="6WH-7c-mTU"/>
                 <outlet property="title" destination="lrr-M6-yu5" id="SXf-F6-XeM"/>
             </connections>
             <point key="canvasLocation" x="43" y="85"/>

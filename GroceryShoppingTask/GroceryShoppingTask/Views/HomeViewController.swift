@@ -1,23 +1,29 @@
 //
-//  ShoppingViewController.swift
+//  HomeViewController.swift
 //  GroceryShoppingTask
 //
-//  Created by Atta Amed on 7/7/20.
+//  Created by Atta Amed on 7/9/20.
 //  Copyright © 2020 Atta Amed. All rights reserved.
 //
 
 import UIKit
 
-class ShoppingViewController: UIViewController {
+protocol HomeViewProtocol: AnyObject {
+    func showIndecator()
+    func reloadProductsList()
+    func cartUpdated()
+}
+
+class HomeViewController: UIViewController {
 
     @IBOutlet weak var shoppingCollectionView: UICollectionView!
-    fileprivate var presenter = ShoppingPresenter()
+    lazy var boxView: UIView! = { return self.newLoadingIndicator() }()
+    var presenter: HomePresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollection()
-        presenter.shoppingDelegate = self
-        presenter.getProducts()
+        presenter?.fetchHomeProducts()
     }
 
     func setupCollection() {
@@ -38,31 +44,28 @@ class ShoppingViewController: UIViewController {
     }
 }
 
-extension ShoppingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.products.count
+        return presenter?.numberOfProducts ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCell",
-                                                         for: indexPath) as? ShoppingCell {
-            cell.setup(product: presenter.products[indexPath.row])
+                                                         for: indexPath) as? ShoppingCell,
+            let product = presenter?.product(at: indexPath.row) {
+            cell.configuer(product: product )
             return cell
         }
         return UICollectionViewCell()
     }
-
-
-}
-
-extension ShoppingViewController: ShoppingPresenterProtocol {
-    func onSuccessGetProducts() {
-        shoppingCollectionView.reloadData()
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.didSelectProduct(at: indexPath.row)
     }
+
 }
 
-extension ShoppingViewController: UIScrollViewDelegate {
+extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         loadMoreCharacters(scrollView)
     }
@@ -74,8 +77,26 @@ extension ShoppingViewController: UIScrollViewDelegate {
 
         if maximumOffset - currentOffset <= 20.0 {
             DispatchQueue.main.async {
-                self.presenter.getProducts()
+                self.presenter?.fetchHomeProducts()
             }
         }
+    }
+}
+
+extension HomeViewController: HomeViewProtocol {
+
+    func cartUpdated() {
+        shoppingCollectionView.reloadData()
+    }
+
+    func showIndecator() {
+        //  self.showLoadingIndecator(boxView)
+    }
+
+    func reloadProductsList() {
+        shoppingCollectionView.reloadData()
+//        if let cartVC = self.tabBarController?.viewControllers?[1] as? CartsViewController {
+//            cartVC.tabBarController?.tabBarItem.badgeValue =
+//        }
     }
 }

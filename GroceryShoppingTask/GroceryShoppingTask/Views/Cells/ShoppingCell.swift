@@ -10,15 +10,22 @@ import UIKit
 
 class ShoppingCell: UICollectionViewCell {
 
+    @IBOutlet weak var quintityLabel: UILabel!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    func setup(product: Product) {
+    func configuer(product: ProductUIModel) {
         imageView.downloadImageByKF(imagePath: product.imageURL ?? "")
         title.text = "\(product.name ?? "") - $\(product.pricePerUnit ?? 0)"
+        if product.quantity == 0 {
+            quintityLabel.isHidden =  true
+        } else {
+            quintityLabel.text = "\(product.quantity)"
+            quintityLabel.isHidden = false
+        }
     }
 
 

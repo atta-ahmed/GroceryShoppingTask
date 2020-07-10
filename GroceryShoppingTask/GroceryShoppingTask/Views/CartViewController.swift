@@ -1,24 +1,33 @@
 //
-//  CartViewController.swift
+//  CartsViewController.swift
 //  GroceryShoppingTask
 //
-//  Created by Atta Amed on 7/7/20.
+//  Created by Atta Amed on 7/9/20.
 //  Copyright © 2020 Atta Amed. All rights reserved.
 //
 
 import UIKit
+protocol CartViewProtocol: AnyObject {
+    func showIndecator()
+    func reloadCartList()
+    func cartUpdated()
+}
+
 
 class CartViewController: UIViewController {
-
-    @IBOutlet weak var cartTableView: UITableView!
-    var presenter = CartPresenter()
     
+    @IBOutlet weak var cartTableView: UITableView!
+    lazy var boxView: UIView! = { return self.newLoadingIndicator() }()
+    var presenter: CartPresenterProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCartTable()
-        presenter.getCarts()
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.fetchLocalCart()
+    }
+    
     private func setUpCartTable() {
         cartTableView.register(UINib(nibName: "CartCell", bundle: nil),
                                forCellReuseIdentifier: "CartCell")
@@ -29,18 +38,39 @@ class CartViewController: UIViewController {
     }
 
 }
+extension CartViewController: CartViewProtocol {
+    func showIndecator() {
+        //
+    }
+
+    func reloadCartList() {
+        cartTableView.reloadData()
+    }
+
+    func cartUpdated() {
+        //
+    }
+
+
+}
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return presenter?.numberOfCart ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell =  cartTableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath) as? CartCell {
-            cell.Config()
-            return cell
+            if let cart = self.presenter?.cart(at: indexPath.row) {
+                cell.configeur(cart: cart)
+                cell.plusButton.addTarget(self,action: #selector(changeQuantity),
+                                          for: .touchUpInside)
+                return cell
+            }
         }
         return UITableViewCell()
     }
-
+    @objc func changeQuantity() {
+        
+    }
 }

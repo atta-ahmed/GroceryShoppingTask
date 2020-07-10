@@ -75,8 +75,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="countLabel" destination="epJ-YT-z5h" id="JZz-2Y-4VE"/>
-                <outlet property="minusButton" destination="4s4-Lv-tg9" id="oEv-yH-Csl"/>
-                <outlet property="plusButton" destination="rSB-gF-ISw" id="GZr-oP-6fG"/>
+                <outlet property="minusButton" destination="4s4-Lv-tg9" id="JAt-ke-Wj7"/>
+                <outlet property="plusButton" destination="rSB-gF-ISw" id="32D-kK-DbM"/>
                 <outlet property="priceLabel" destination="zUL-XP-D66" id="WP1-l1-sAx"/>
                 <outlet property="productImageView" destination="FnG-Ur-z85" id="K0G-VI-7kl"/>
                 <outlet property="titleLabel" destination="yqM-l2-JX0" id="dww-Py-c0e"/>

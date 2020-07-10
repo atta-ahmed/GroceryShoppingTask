@@ -7,24 +7,48 @@
 //
 
 import Foundation
+protocol CartPresenterProtocol {
+
+    var numberOfCart: Int {get}
+    func fetchLocalCart()
+    func cart(at index: Int) -> CartUiModel
+    func didChangeQuantity(at index: Int)
+}
 
 class CartPresenter {
 
-    weak var cartDelegate: CartProtocol?
-    var carts: [Cart] = []
+     var cart: [CartUiModel] = []
+     let useCase: CartUseCase
+     public weak var view: CartViewProtocol?
 
-    func getCarts() {
-        NetworkHelper.request(url: "cart", success: successGetCarts , method: .get, paramter: ["id":"db08520c-c151-11ea-b3de-0242ac130004"])
+     public init(view: CartViewProtocol,
+                 useCase: CartUseCase) {
+        self.view = view
+        self.useCase = useCase
+     }
+
+}
+
+extension CartPresenter: CartPresenterProtocol {
+    var numberOfCart: Int {
+        return cart.count
     }
 
-    func updateCarts() {
-           NetworkHelper.request(url: "cart", success: successGetCarts , method: .post, paramter: [:])
-       }
-
-     fileprivate func successGetCarts(carts: [Cart]){
-        for cart in carts {
-            self.carts.append(cart)
+    func fetchLocalCart() {
+        self.view?.showIndecator()
+        useCase.fetchLocalCart { (error, cart) in
+            self.cart = cart
+            self.view?.reloadCartList()
         }
-        cartDelegate?.onSuccessGetCart()
     }
+
+    func cart(at index: Int) -> CartUiModel {
+        return cart[index]
+    }
+
+    func didChangeQuantity(at index: Int) {
+        //
+    }
+
+    
 }

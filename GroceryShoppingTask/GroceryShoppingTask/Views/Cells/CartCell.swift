@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CartCell: UITableViewCell {
 
@@ -17,13 +18,17 @@ class CartCell: UITableViewCell {
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    func Config() {
-        productImageView.image = UIImage(named: "default")
+    func configeur(cart: CartUiModel) {
+        priceLabel.text = "\(cart.pricePerUnit ?? 0.0)"
+        titleLabel.text = cart.name
+        countLabel.text = "\(cart.quantity)"
+        productImageView.downloadImageByKF(imagePath: cart.imageURL ?? "")
     }
     
 }
