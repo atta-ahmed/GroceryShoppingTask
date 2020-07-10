@@ -10,16 +10,21 @@ import UIKit
 
 protocol HomeViewProtocol: AnyObject {
     func showIndecator()
+    func stopIndicator()
     func reloadProductsList()
     func cartUpdated()
 }
 
+//MARK:- Setup View
 class HomeViewController: UIViewController {
 
+    //MARK:- outlets
     @IBOutlet weak var shoppingCollectionView: UICollectionView!
-    lazy var boxView: UIView! = { return self.newLoadingIndicator() }()
+    //MARK:- properties
+    lazy var boxView: UIView! = { return self.view.newLoadingIndicator() }()
     var presenter: HomePresenterProtocol?
 
+    //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollection()
@@ -29,6 +34,7 @@ class HomeViewController: UIViewController {
         presenter?.fetchLocalCart()
     }
 
+    //MARK:- Setup UI
     func setupCollection() {
         self.shoppingCollectionView.register(UINib(nibName: "ShoppingCell", bundle: nil),
                                              forCellWithReuseIdentifier: "ShoppingCell")
@@ -36,7 +42,7 @@ class HomeViewController: UIViewController {
         shoppingCollectionView.dataSource = self
         layoutCells()
     }
-
+    /// UICollectionView Flow Layout
     private func layoutCells() {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10)
@@ -47,6 +53,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+//MARK:- Handle Collection
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -68,12 +75,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 }
 
+//MARK:- Handle pagenation
 extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        loadMoreCharacters(scrollView)
+        loadMoreProducts(scrollView)
     }
 
-    fileprivate func loadMoreCharacters(_ scrollView: UIScrollView) {
+    /// whene scroll to the bottom of view it's call api
+    fileprivate func loadMoreProducts(_ scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height -
             scrollView.frame.size.height
@@ -86,20 +95,20 @@ extension HomeViewController: UIScrollViewDelegate {
     }
 }
 
+//MARK:- Handle UI
 extension HomeViewController: HomeViewProtocol {
-
+    /// whene add product to cart
     func cartUpdated() {
         shoppingCollectionView.reloadData()
     }
 
     func showIndecator() {
-        //  self.showLoadingIndecator(boxView)
+        self.view.showLoadingIndicator(boxView)
     }
-
+    func stopIndicator(){
+        self.view.hideLoadingIndicator(boxView)
+    }
     func reloadProductsList() {
         shoppingCollectionView.reloadData()
-//        if let cartVC = self.tabBarController?.viewControllers?[1] as? CartsViewController {
-//            cartVC.tabBarController?.tabBarItem.badgeValue =
-//        }
     }
 }

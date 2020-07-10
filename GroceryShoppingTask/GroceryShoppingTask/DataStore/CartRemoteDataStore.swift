@@ -27,5 +27,4 @@ class CartRemoteDataStore: CartRemoteDataStoreProtocol {
             completion(response)
         }
     }
-
 }

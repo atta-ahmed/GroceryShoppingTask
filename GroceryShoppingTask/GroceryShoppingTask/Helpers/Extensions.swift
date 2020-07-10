@@ -42,13 +42,13 @@ extension Encodable {
 
 }
 
-extension UIViewController {
+extension UIView {
 
     // Loading Indicator Factory
     func newLoadingIndicator() -> UIView {
         // Box Configuration
-        let box = UIView(frame: CGRect(x: self.view.frame.width/2.0 - 30,
-                                       y: self.view.frame.height/2.0 - 30,
+        let box = UIView(frame: CGRect(x: self.frame.width/2.0 - 30,
+                                       y: self.frame.height/2.0 - 30,
                                        width: 60,
                                        height: 60))
         box.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
@@ -66,19 +66,20 @@ extension UIViewController {
     }
 
     func showLoadingIndicator(_ indicator: UIView) {
-        self.view.addSubview(indicator)
-        self.view.isUserInteractionEnabled = false
+        self.addSubview(indicator)
+        self.isUserInteractionEnabled = false
     }
 
     func hideLoadingIndicator(_ indicator: UIView) {
         indicator.removeFromSuperview()
-        self.view.isUserInteractionEnabled = true
+        self.isUserInteractionEnabled = true
     }
 }
 
 
 extension UserDefaults {
-
+    
+    /// check if cart element exist in UserDefaults
     func cartExists(id: Int, key: String) -> Bool {
         if let object = decode(for: [Cart].self, using: key) {
         let cart = object as [Cart]
@@ -86,14 +87,14 @@ extension UserDefaults {
         }
         return false
     }
-
+    /// encod and save data
     func encode<T : Codable>(for type : T, using key : String) {
         let defaults = UserDefaults.standard
         let encodedData = try? PropertyListEncoder().encode(type)
         defaults.set(encodedData, forKey: key)
         defaults.synchronize()
     }
-
+    /// decode and get data
     func decode<T : Codable>(for type : T.Type, using key : String) -> T? {
         let defaults = UserDefaults.standard
         guard let data = defaults.object(forKey: key) as? Data else {return nil}

@@ -7,8 +7,8 @@
 //
 
 import Foundation
+//MARK:- Protocol
 protocol CartPresenterProtocol {
-
     var numberOfCart: Int {get}
     func fetchLocalCart()
     func cart(at index: Int) -> CartUiModel
@@ -17,10 +17,13 @@ protocol CartPresenterProtocol {
 
 class CartPresenter {
 
+    //MARK:- properties
      var cart: [CartUiModel] = []
      let useCase: CartUseCase
+
      public weak var view: CartViewProtocol?
 
+    //MARK:- Init
      public init(view: CartViewProtocol,
                  useCase: CartUseCase) {
         self.view = view
@@ -29,23 +32,22 @@ class CartPresenter {
 
 }
 
+//MARK:- Handle UI logic
 extension CartPresenter: CartPresenterProtocol {
     var numberOfCart: Int {
         return cart.count
     }
 
+    /// fetch only local data to update quantity
     func fetchLocalCart() {
         self.view?.showIndecator()
         useCase.fetchLocalCart { (error, cart) in
             self.cart = cart
+            self.view?.stopIndicator()
             self.view?.reloadCartList()
         }
     }
-
-    func cart(at index: Int) -> CartUiModel {
-        return cart[index]
-    }
-
+    /// handle +,- buttons
     func didChangeQuantity(whereID id: Int, isIncrease: Bool) {
         if var selectedCart = cart.first(where: { $0.id == id }) {
             if isIncrease {
@@ -58,5 +60,7 @@ extension CartPresenter: CartPresenterProtocol {
             }
         }
     }
-    
+    func cart(at index: Int) -> CartUiModel {
+        return cart[index]
+    }
 }

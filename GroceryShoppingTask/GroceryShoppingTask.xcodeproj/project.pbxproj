@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E833DCA24B5EB730057D502 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DC924B5EB730057D502 /* NetworkHelper.swift */; };
-		2E833DCC24B5EC1D0057D502 /* GroceryAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DCB24B5EC1D0057D502 /* GroceryAPIConfig.swift */; };
-		2E833DCE24B601DE0057D502 /* ShoppingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DCD24B601DE0057D502 /* ShoppingPresenter.swift */; };
+		2E833DCA24B5EB730057D502 /* GSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DC924B5EB730057D502 /* GSError.swift */; };
+		2E833DCC24B5EC1D0057D502 /* GSAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DCB24B5EC1D0057D502 /* GSAPIConfig.swift */; };
 		2E833DD024B602B80057D502 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DCF24B602B80057D502 /* Product.swift */; };
 		2E833DD324B608D30057D502 /* ShoppingPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DD224B608D30057D502 /* ShoppingPresenterProtocol.swift */; };
 		2E833DD524B60F7F0057D502 /* ShoppingPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DD424B60F7F0057D502 /* ShoppingPresenterTests.swift */; };
@@ -29,7 +28,6 @@
 		2E833DF724B7A3470057D502 /* GrocoeryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DF624B7A3470057D502 /* GrocoeryConfigurator.swift */; };
 		2E833DF924B7A8F30057D502 /* HomePresnter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DF824B7A8F30057D502 /* HomePresnter.swift */; };
 		2E833DFB24B7AA310057D502 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DFA24B7AA310057D502 /* ProductsRepository.swift */; };
-		2E833DFD24B7C2FE0057D502 /* GrocoeryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DFC24B7C2FE0057D502 /* GrocoeryDataStore.swift */; };
 		2E833E0024B7CC250057D502 /* ProductRemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DFF24B7CC250057D502 /* ProductRemoteDataStore.swift */; };
 		2E833E0324B8A8520057D502 /* ProductsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833E0224B8A8520057D502 /* ProductsUseCase.swift */; };
 		2E833E0624B8BC3C0057D502 /* LocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833E0524B8BC3C0057D502 /* LocalDataStore.swift */; };
@@ -64,9 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2E833DC924B5EB730057D502 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
-		2E833DCB24B5EC1D0057D502 /* GroceryAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryAPIConfig.swift; sourceTree = "<group>"; };
-		2E833DCD24B601DE0057D502 /* ShoppingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingPresenter.swift; sourceTree = "<group>"; };
+		2E833DC924B5EB730057D502 /* GSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSError.swift; sourceTree = "<group>"; };
+		2E833DCB24B5EC1D0057D502 /* GSAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSAPIConfig.swift; sourceTree = "<group>"; };
 		2E833DCF24B602B80057D502 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		2E833DD224B608D30057D502 /* ShoppingPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingPresenterProtocol.swift; sourceTree = "<group>"; };
 		2E833DD424B60F7F0057D502 /* ShoppingPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingPresenterTests.swift; sourceTree = "<group>"; };
@@ -86,7 +83,6 @@
 		2E833DF624B7A3470057D502 /* GrocoeryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocoeryConfigurator.swift; sourceTree = "<group>"; };
 		2E833DF824B7A8F30057D502 /* HomePresnter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresnter.swift; sourceTree = "<group>"; };
 		2E833DFA24B7AA310057D502 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
-		2E833DFC24B7C2FE0057D502 /* GrocoeryDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocoeryDataStore.swift; sourceTree = "<group>"; };
 		2E833DFF24B7CC250057D502 /* ProductRemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRemoteDataStore.swift; sourceTree = "<group>"; };
 		2E833E0224B8A8520057D502 /* ProductsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsUseCase.swift; sourceTree = "<group>"; };
 		2E833E0524B8BC3C0057D502 /* LocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
@@ -141,8 +137,8 @@
 		2E833DC824B5EB410057D502 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				2E833DC924B5EB730057D502 /* NetworkHelper.swift */,
-				2E833DCB24B5EC1D0057D502 /* GroceryAPIConfig.swift */,
+				2E833DC924B5EB730057D502 /* GSError.swift */,
+				2E833DCB24B5EC1D0057D502 /* GSAPIConfig.swift */,
 				2E833DD624B617F80057D502 /* Extensions.swift */,
 			);
 			path = Helpers;
@@ -252,7 +248,6 @@
 				2EDC3A9124B4FAB700944A3D /* Assets.xcassets */,
 				2EDC3A9324B4FAB700944A3D /* LaunchScreen.storyboard */,
 				2EDC3A9624B4FAB700944A3D /* Info.plist */,
-				2E833DFC24B7C2FE0057D502 /* GrocoeryDataStore.swift */,
 			);
 			path = GroceryShoppingTask;
 			sourceTree = "<group>";
@@ -294,7 +289,6 @@
 		2EDC3AAC24B5111900944A3D /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				2E833DCD24B601DE0057D502 /* ShoppingPresenter.swift */,
 				2E833DDE24B6533E0057D502 /* CartPresenter.swift */,
 				2E833DF824B7A8F30057D502 /* HomePresnter.swift */,
 			);
@@ -519,14 +513,12 @@
 				2E833DFB24B7AA310057D502 /* ProductsRepository.swift in Sources */,
 				2E833E1124B901930057D502 /* ProductUiModel.swift in Sources */,
 				2E833DDD24B652F60057D502 /* Cart.swift in Sources */,
-				2E833DCE24B601DE0057D502 /* ShoppingPresenter.swift in Sources */,
 				2E833DF324B7A30C0057D502 /* TabBarController.swift in Sources */,
 				2E833DD324B608D30057D502 /* ShoppingPresenterProtocol.swift in Sources */,
-				2E833DFD24B7C2FE0057D502 /* GrocoeryDataStore.swift in Sources */,
 				2E833DDA24B648E10057D502 /* CartCell.swift in Sources */,
 				2E833E0624B8BC3C0057D502 /* LocalDataStore.swift in Sources */,
-				2E833DCC24B5EC1D0057D502 /* GroceryAPIConfig.swift in Sources */,
-				2E833DCA24B5EB730057D502 /* NetworkHelper.swift in Sources */,
+				2E833DCC24B5EC1D0057D502 /* GSAPIConfig.swift in Sources */,
+				2E833DCA24B5EB730057D502 /* GSError.swift in Sources */,
 				2E833DE124B6535E0057D502 /* CartProtocol.swift in Sources */,
 				2E833DD724B617F80057D502 /* Extensions.swift in Sources */,
 				2E833E0C24B8F4C30057D502 /* NetworkManager.swift in Sources */,

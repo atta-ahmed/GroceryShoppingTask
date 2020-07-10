@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 public typealias VFGNetworkCompletion = ( Codable?, Error? ) -> Void
-
+/// Api Manager
 class NetworkManager {
 
     class func execute<T: Codable>(url: String,

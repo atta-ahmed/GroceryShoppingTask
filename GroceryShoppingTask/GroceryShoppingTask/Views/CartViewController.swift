@@ -7,19 +7,24 @@
 //
 
 import UIKit
+//MARK:- protocol
 protocol CartViewProtocol: AnyObject {
     func showIndecator()
+    func stopIndicator()
     func reloadCartList()
     func cartUpdated()
 }
 
 
 class CartViewController: UIViewController {
-    
+    //MARK:- outlets
     @IBOutlet weak var cartTableView: UITableView!
-    lazy var boxView: UIView! = { return self.newLoadingIndicator() }()
+
+    //MARK:- properties
+    lazy var boxView: UIView! = { return self.view.newLoadingIndicator() }()
     var presenter: CartPresenterProtocol?
 
+    //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCartTable()
@@ -27,7 +32,8 @@ class CartViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         presenter?.fetchLocalCart()
     }
-    
+
+    //MARK:- Setup UI
     private func setUpCartTable() {
         cartTableView.register(UINib(nibName: "CartCell", bundle: nil),
                                forCellReuseIdentifier: "CartCell")
@@ -39,9 +45,14 @@ class CartViewController: UIViewController {
     }
 }
 
+//MARK:- Handle ui
 extension CartViewController: CartViewProtocol {
+
     func showIndecator() {
-        //
+        self.view.showLoadingIndicator(boxView)
+    }
+    func stopIndicator(){
+        self.view.hideLoadingIndicator(boxView)
     }
 
     func reloadCartList() {
@@ -49,11 +60,11 @@ extension CartViewController: CartViewProtocol {
     }
 
     func cartUpdated() {
-        //
+    //
     }
-
 }
 
+//MARK:- tableview
 extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.numberOfCart ?? 0

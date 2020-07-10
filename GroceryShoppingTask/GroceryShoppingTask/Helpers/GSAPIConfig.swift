@@ -8,7 +8,5 @@
 
 import Foundation
 class GroceryAPIConfig {
-
     static let URL = "http://13.48.127.170:3000/"
-
 }

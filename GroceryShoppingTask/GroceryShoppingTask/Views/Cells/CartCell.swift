@@ -21,14 +21,17 @@ class CartCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
+    /// Configuer cell with UIModel
     func configeur(cart: CartUiModel) {
+        
         priceLabel.text = "$\(cart.pricePerUnit ?? 0.0)"
         titleLabel.text = cart.name
         countLabel.text = "\(cart.quantity)"
         productImageView.downloadImageByKF(imagePath: cart.imageURL ?? "")
+
+        /// set buttons tag by ids to be knowen whic cart entity take action
         minusButton.tag = cart.id ?? 0
         plusButton.tag = cart.id ?? 0
     }

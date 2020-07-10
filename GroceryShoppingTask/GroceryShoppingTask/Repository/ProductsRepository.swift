@@ -7,13 +7,14 @@
 //
 
 import Foundation
+
 protocol  ProductsRepositoryProtocol {
     func featchProducts(offset: Int, completion: @escaping (Error?, [Product]) -> Void)
     func fetchLocalCart(completion: @escaping (Error?, [Cart]) -> Void)
     func updateCarts(_ cart: Cart, completion: @escaping () -> Void)
 }
-class ProductsRepository {
 
+class ProductsRepository {
     let remoteDataStore: ProductRemoteDataStoreProtocol
     let localDataStore: LocalDataStoreProtocol
 
@@ -21,12 +22,10 @@ class ProductsRepository {
          localDataStore: LocalDataStoreProtocol) {
         self.localDataStore = localDataStore
         self.remoteDataStore = remoteDataStore
-
     }
-
 }
-extension ProductsRepository: ProductsRepositoryProtocol {
 
+extension ProductsRepository: ProductsRepositoryProtocol {
     func featchProducts(offset: Int, completion: @escaping (Error?, [Product]) -> Void) {
         remoteDataStore.fetchHomeProductsDataStore(offset: offset) { (response) in
             completion(nil, response)
@@ -43,7 +42,4 @@ extension ProductsRepository: ProductsRepositoryProtocol {
             completion()
         }
     }
-
-
-
 }

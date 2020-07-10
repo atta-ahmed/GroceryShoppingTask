@@ -7,9 +7,11 @@
 //
 
 import Foundation
+
 protocol ProductRemoteDataStoreProtocol {
     func fetchHomeProductsDataStore(offset: Int, completion: @escaping ([Product]) -> Void)
 }
+
 class ProductRemoteDataStore: ProductRemoteDataStoreProtocol {
     func fetchHomeProductsDataStore(offset: Int, completion: @escaping ([Product]) -> Void) {
         let params = ["limit": 10,

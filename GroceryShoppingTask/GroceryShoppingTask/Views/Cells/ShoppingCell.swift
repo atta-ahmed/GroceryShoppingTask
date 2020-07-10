@@ -15,8 +15,8 @@ class ShoppingCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
+    /// Configuer cell with UIModel
     func configuer(product: ProductUIModel) {
         imageView.downloadImageByKF(imagePath: product.imageURL ?? "")
         title.text = "\(product.name ?? "") - $\(product.pricePerUnit ?? 0)"

@@ -13,8 +13,8 @@ protocol LocalDataStoreProtocol {
     func fetchLocalCart(completion: @escaping ([Cart]) -> Void)
 
 }
-class LocalDataStore: LocalDataStoreProtocol {
 
+class LocalDataStore: LocalDataStoreProtocol {
     func fetchLocalCart(completion: @escaping ([Cart]) -> Void) {
         let defaults = UserDefaults.standard
         guard let cart = defaults.decode(for: [Cart].self, using: "allSavedCart") else { return }

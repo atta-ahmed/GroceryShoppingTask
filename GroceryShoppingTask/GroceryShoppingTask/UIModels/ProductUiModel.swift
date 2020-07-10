@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// MARK: - ProductUIModel
 struct ProductUIModel {
     var id: Int?
     var imageURL: String?

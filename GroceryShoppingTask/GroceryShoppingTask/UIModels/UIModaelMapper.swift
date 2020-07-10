@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// MARK: - UIModelProtocol
 protocol UIModelMapperProtocol {
     func convertProductToUIModel(products: [Product]) -> [ProductUIModel]
     func convertCartToProductUIModel(cart: [Cart]) -> [ProductUIModel]
@@ -16,6 +16,9 @@ protocol UIModelMapperProtocol {
     func updateQuantityOfProducts(localPoducts: [ProductUIModel],
                                   remoteProducts:  [ProductUIModel]) -> [ProductUIModel]
 }
+
+// MARK: - UIModelMapper
+// Todo:- seperate logic
 
 struct UIModelMapper: UIModelMapperProtocol {
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+// MARK: - Cart
 struct Cart: Codable {
     var id: String?
     var products: [ProductElement] = []

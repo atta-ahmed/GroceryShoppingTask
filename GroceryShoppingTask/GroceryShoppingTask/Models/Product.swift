@@ -8,12 +8,11 @@
 
 import Foundation
 
+// MARK: - Product
 struct Product: Codable {
-
     var id: Int?
     var imageURL: String?
     var name: String?
     var pricePerUnit: Double?
-
 }
 
