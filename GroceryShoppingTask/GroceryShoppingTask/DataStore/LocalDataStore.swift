@@ -18,7 +18,6 @@ class LocalDataStore: LocalDataStoreProtocol {
     func fetchLocalCart(completion: @escaping ([Cart]) -> Void) {
         let defaults = UserDefaults.standard
         guard let cart = defaults.decode(for: [Cart].self, using: "allSavedCart") else { return }
-        
         completion(cart)
     }
 
@@ -27,9 +26,12 @@ class LocalDataStore: LocalDataStoreProtocol {
         if var cartArray = defaults.decode(for: [Cart].self, using: "allSavedCart") {
             if defaults.cartExists(id: cart.products.first?.product?.id ?? 0, key: "allSavedCart") {
                 for (i, updatedObject) in cartArray.enumerated() {
-                    let cart = updatedObject as Cart
-                    if cart.products.first?.product?.id == updatedObject.products.first?.product?.id {
+                    let updatedCart = updatedObject as Cart
+                    if cart.products.first?.product?.id == updatedCart.products.first?.product?.id {
                         cartArray[i].products[0].quantity = cart.products.first?.quantity
+                        if cart.products.first?.quantity == 0 {
+                            cartArray.remove(at: i)
+                        }
                     }
                 }
                 defaults.encode(for: cartArray, using: "allSavedCart")

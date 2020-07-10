@@ -25,6 +25,9 @@ class HomeViewController: UIViewController {
         setupCollection()
         presenter?.fetchHomeProducts()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.fetchLocalCart()
+    }
 
     func setupCollection() {
         self.shoppingCollectionView.register(UINib(nibName: "ShoppingCell", bundle: nil),

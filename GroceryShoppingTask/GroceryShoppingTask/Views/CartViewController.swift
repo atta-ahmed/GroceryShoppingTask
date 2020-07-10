@@ -31,13 +31,14 @@ class CartViewController: UIViewController {
     private func setUpCartTable() {
         cartTableView.register(UINib(nibName: "CartCell", bundle: nil),
                                forCellReuseIdentifier: "CartCell")
+        cartTableView.tableFooterView = UIView()
         cartTableView.delegate = self
         cartTableView.dataSource = self
         cartTableView.rowHeight = 80
         cartTableView.separatorInset.left = 0
     }
-
 }
+
 extension CartViewController: CartViewProtocol {
     func showIndecator() {
         //
@@ -51,7 +52,6 @@ extension CartViewController: CartViewProtocol {
         //
     }
 
-
 }
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource {
@@ -63,14 +63,22 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell =  cartTableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath) as? CartCell {
             if let cart = self.presenter?.cart(at: indexPath.row) {
                 cell.configeur(cart: cart)
-                cell.plusButton.addTarget(self,action: #selector(changeQuantity),
+                cell.plusButton.addTarget(self,action: #selector(increaseQuantity),
+                                          for: .touchUpInside)
+
+                cell.minusButton.addTarget(self,action: #selector(decreseQuantity),
                                           for: .touchUpInside)
                 return cell
             }
         }
         return UITableViewCell()
     }
-    @objc func changeQuantity() {
-        
+
+    @objc func increaseQuantity(_ sender: UIButton) {
+        presenter?.didChangeQuantity(whereID: sender.tag, isIncrease: true)
+    }
+
+    @objc func decreseQuantity(_ sender: UIButton) {
+        presenter?.didChangeQuantity(whereID: sender.tag, isIncrease: false)
     }
 }

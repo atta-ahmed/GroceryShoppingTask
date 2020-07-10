@@ -12,7 +12,7 @@ protocol CartPresenterProtocol {
     var numberOfCart: Int {get}
     func fetchLocalCart()
     func cart(at index: Int) -> CartUiModel
-    func didChangeQuantity(at index: Int)
+    func didChangeQuantity(whereID id: Int, isIncrease: Bool)
 }
 
 class CartPresenter {
@@ -46,9 +46,17 @@ extension CartPresenter: CartPresenterProtocol {
         return cart[index]
     }
 
-    func didChangeQuantity(at index: Int) {
-        //
+    func didChangeQuantity(whereID id: Int, isIncrease: Bool) {
+        if var selectedCart = cart.first(where: { $0.id == id }) {
+            if isIncrease {
+                selectedCart.quantity += 1
+            } else {
+                selectedCart.quantity -= 1
+            }
+            useCase.updateCart(selectedCart) {
+                self.fetchLocalCart()
+            }
+        }
     }
-
     
 }

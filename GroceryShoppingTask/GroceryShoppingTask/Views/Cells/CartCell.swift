@@ -25,10 +25,12 @@ class CartCell: UITableViewCell {
     }
 
     func configeur(cart: CartUiModel) {
-        priceLabel.text = "\(cart.pricePerUnit ?? 0.0)"
+        priceLabel.text = "$\(cart.pricePerUnit ?? 0.0)"
         titleLabel.text = cart.name
         countLabel.text = "\(cart.quantity)"
         productImageView.downloadImageByKF(imagePath: cart.imageURL ?? "")
+        minusButton.tag = cart.id ?? 0
+        plusButton.tag = cart.id ?? 0
     }
     
 }

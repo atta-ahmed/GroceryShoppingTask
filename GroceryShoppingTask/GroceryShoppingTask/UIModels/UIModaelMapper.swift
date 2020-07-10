@@ -12,6 +12,7 @@ protocol UIModelMapperProtocol {
     func convertProductToUIModel(products: [Product]) -> [ProductUIModel]
     func convertCartToProductUIModel(cart: [Cart]) -> [ProductUIModel]
     func convertProductUIModelToCart(model: ProductUIModel) -> Cart
+    func convertCartUIModelToCart(model: CartUiModel) -> Cart
     func updateQuantityOfProducts(localPoducts: [ProductUIModel],
                                   remoteProducts:  [ProductUIModel]) -> [ProductUIModel]
 }
@@ -25,6 +26,13 @@ struct UIModelMapper: UIModelMapperProtocol {
                                   name: $0.name,
                                   pricePerUnit: $0.pricePerUnit)
         }
+    }
+
+    func convertCartUIModelToCart(model: CartUiModel) -> Cart {
+        let product = Product(id: model.id, imageURL: model.imageURL, name: model.name, pricePerUnit: model.pricePerUnit)
+        let newProduct = ProductElement(quantity: model.quantity, product: product)
+        return Cart(id: "db08520c-c151-11ea-b3de-0242ac130004", products: [newProduct])
+
     }
 
     func convertCartToCartUIModel(cart: [Cart]) -> [CartUiModel] {
@@ -55,8 +63,10 @@ struct UIModelMapper: UIModelMapperProtocol {
 
     func updateQuantityOfProducts(localPoducts: [ProductUIModel], remoteProducts:  [ProductUIModel]) -> [ProductUIModel] {
         var updatedProducts = remoteProducts
+        for (i,_) in remoteProducts.enumerated() {
+            updatedProducts[i].quantity = 0
+        }
         for localProduct in localPoducts {
-
             for (index, product) in updatedProducts.enumerated() {
                 if product.id == localProduct.id {
                     updatedProducts[index].quantity = localProduct.quantity

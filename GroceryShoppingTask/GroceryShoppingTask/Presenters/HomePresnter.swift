@@ -37,7 +37,10 @@ extension HomePresenter: HomePresenterProtocol {
     }
 
     func fetchLocalCart() {
-        //repositry.
+        useCase.fetchLocalCart(currentProduct: products) { (error, products) in
+            self.products = products
+            self.view?.reloadProductsList()
+        }
     }
 
     func fetchHomeProducts() {

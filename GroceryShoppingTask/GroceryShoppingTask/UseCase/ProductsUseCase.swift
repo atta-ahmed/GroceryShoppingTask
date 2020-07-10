@@ -10,6 +10,8 @@ import Foundation
 protocol ProductsUseCaseProtocol {
     func featchData(offset: Int, completion: @escaping (Error?, [ProductUIModel]) -> Void)
     func updateLocalCart(_ cart: ProductUIModel, completion: @escaping () -> Void)
+    func fetchLocalCart(currentProduct: [ProductUIModel], completion: @escaping (Error?, [ProductUIModel]) -> Void)
+    
 }
 
 class ProductsUseCase {
@@ -27,6 +29,19 @@ class ProductsUseCase {
 }
 
 extension ProductsUseCase: ProductsUseCaseProtocol {
+    func fetchLocalCart(currentProduct: [ProductUIModel], completion: @escaping (Error?, [ProductUIModel]) -> Void) {
+        var localPoducts: [ProductUIModel] = []
+        var allProducts: [ProductUIModel] = []
+        repositry.fetchLocalCart { (error, arrayOfCart) in
+            localPoducts = self.uiModelMapper.convertCartToProductUIModel(cart: arrayOfCart)
+
+            allProducts = self.uiModelMapper.updateQuantityOfProducts(localPoducts: localPoducts,
+                                                                      remoteProducts: currentProduct)
+            completion(nil, allProducts)
+        }
+
+    }
+
 
     func featchData(offset: Int, completion: @escaping (Error?, [ProductUIModel]) -> Void) {
         var remoteProducts: [ProductUIModel] = []
@@ -41,7 +56,7 @@ extension ProductsUseCase: ProductsUseCaseProtocol {
 
             allProducts = self.uiModelMapper.updateQuantityOfProducts(localPoducts: localPoducts,
                                                                       remoteProducts: remoteProducts)
-            completion(nil, allProducts )
+            completion(nil, allProducts)
         }
     }
 

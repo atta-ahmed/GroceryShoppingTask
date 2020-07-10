@@ -10,7 +10,7 @@ import Foundation
 
 protocol CartUseCaseProtocol {
     func fetchLocalCart(completion: @escaping (Error?, [CartUiModel]) -> Void)
-    func updateCart(_ cart: Cart, completion: @escaping () -> Void)
+    func updateCart(_ cart: CartUiModel, completion: @escaping () -> Void)
 }
 
 class CartUseCase {
@@ -36,10 +36,10 @@ extension CartUseCase: CartUseCaseProtocol {
         }
     }
 
-    func updateCart(_ cart: Cart, completion: @escaping () -> Void) {
-        //
+    func updateCart(_ cart: CartUiModel, completion: @escaping () -> Void) {
+        let selectedCart = uiModelMapper.convertCartUIModelToCart(model: cart)
+        repositry.updateCart(selectedCart) {
+            completion()
+        }
     }
-
-
-
 }
