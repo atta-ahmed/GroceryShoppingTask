@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         /// 
         window = UIWindow(frame: UIScreen.main.bounds)
-        UIApplication.shared.delegate?.window??.rootViewController = GrocoeryConfigurator.tabbarController.viewController
+        let navigationBar = UINavigationController(rootViewController: GrocoeryConfigurator.tabbarController.viewController )
+        UIApplication.shared.delegate?.window??.rootViewController = navigationBar
         UIApplication.shared.delegate?.window??.makeKeyAndVisible()
 
         return true

@@ -14,6 +14,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = tabsViewController
+        self.title = "Shopping"
     }
 
     //MARK:- Setup UI
@@ -33,6 +34,10 @@ class TabBarController: UITabBarController {
 
          return[ homeViewController,cartViewController]
      }
+}
 
-
+extension TabBarController: UITabBarControllerDelegate {
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        self.title = item.title
+    }
 }
