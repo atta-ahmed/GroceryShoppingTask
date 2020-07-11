@@ -36,20 +36,20 @@ class ProductHomeViewController: UIViewController {
 
     //MARK:- Setup UI
     func setupCollection() {
-        self.shoppingCollectionView.register(UINib(nibName: "ShoppingCell", bundle: nil),
-                                             forCellWithReuseIdentifier: "ShoppingCell")
+        self.shoppingCollectionView.register(UINib(nibName: "ProductCell", bundle: nil),
+                                             forCellWithReuseIdentifier: "ProductCell")
         shoppingCollectionView.delegate = self
         shoppingCollectionView.dataSource = self
-        layoutCells()
+        layoutCells(shoppingCollectionView)
     }
     /// UICollectionView Flow Layout
-    private func layoutCells() {
+    func layoutCells(_ collectionView: UICollectionView) {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10)
         layout.minimumInteritemSpacing = 10.0
         layout.minimumLineSpacing = 10.0
         layout.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 30)/2, height: ((UIScreen.main.bounds.size.width - 30)/2))
-        shoppingCollectionView.collectionViewLayout = layout
+        collectionView.collectionViewLayout = layout
     }
 }
 
@@ -61,8 +61,8 @@ extension ProductHomeViewController: UICollectionViewDelegate, UICollectionViewD
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCell",
-                                                         for: indexPath) as? ShoppingCell,
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell",
+                                                         for: indexPath) as? ProductCell,
             let product = presenter?.product(at: indexPath.row) {
             cell.configuer(product: product )
             return cell

@@ -14,21 +14,43 @@ class ProductHomePresenterTests: XCTestCase {
 
     var sutPresenter: ProductHomePresenter?
     var useCase: ProductsUseCaseMock!
-    var homeViewController: ProductHomeViewControllerSpy!
+    var productHomeViewController: ProductHomeViewControllerSpy!
 
     override func setUp() {
         super.setUp()
         useCase = ProductsUseCaseMock()
-        homeViewController = ProductHomeViewControllerSpy()
-
-        sutPresenter = ProductHomePresenter(view: homeViewController,
+        productHomeViewController = ProductHomeViewControllerSpy()
+        sutPresenter = ProductHomePresenter(view: productHomeViewController,
                                             useCase: useCase)
+    }
+
+    func testFetchHomeProducts() {
+        productHomeViewController.showIndecator()
+        XCTAssertTrue(productHomeViewController.isShowIndicator)
+
+        sutPresenter?.fetchHomeProducts()
+        XCTAssertEqual(sutPresenter?.products.count, 1)
+        XCTAssertEqual(sutPresenter?.products.first?.quantity, 0)
+
+        productHomeViewController.stopIndicator()
+        XCTAssertFalse(productHomeViewController.isShowIndicator)
+    }
+
+    func testFetchLocalCart() {
+        sutPresenter?.fetchLocalCart()
+        XCTAssertEqual(sutPresenter?.products.count, 2)
+        XCTAssertEqual(sutPresenter?.products.first?.quantity, 1)
+
+        productHomeViewController.updateBadgeNumber("3")
+        XCTAssertEqual(productHomeViewController.badgNumber, "3")
+
+        XCTAssertTrue(productHomeViewController.isReloded)
     }
 
     override func tearDown() {
         super.tearDown()
         useCase = nil
-        homeViewController = nil
+        productHomeViewController = nil
         sutPresenter = nil
     }
 

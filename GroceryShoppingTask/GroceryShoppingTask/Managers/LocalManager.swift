@@ -10,11 +10,12 @@ import Foundation
 
 // Todo:- trnsefare user default logic here
 class LocalManager {
-    
+    static let defaults = UserDefaults.standard
     func getObject(for key: String ) {
     }
 
     func updateObject(for key: String) {
+        
     }
 
     func addObject(for key: String) {
@@ -22,4 +23,5 @@ class LocalManager {
 
     func removeObject(for key: String) {
     }
+    
 }

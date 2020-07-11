@@ -11,25 +11,28 @@ import Foundation
 
 class ProductHomeViewControllerSpy: ProductHomeViewProtocol {
 
-    var isfff = false
+    var isShowIndicator = false
+    var isReloded = false
+    var isCartUpdated = false
+    var badgNumber = ""
 
     func showIndecator() {
-
+        isShowIndicator = true
     }
 
     func stopIndicator() {
-        //
+        isShowIndicator = false
     }
 
     func reloadProductsList() {
-        //
+        isReloded = true
     }
 
     func cartUpdated() {
-        //
+        isCartUpdated = true
     }
 
     func updateBadgeNumber(_ number: String) {
-        //
+        badgNumber = number
     }
 }
