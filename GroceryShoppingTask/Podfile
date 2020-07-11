@@ -1,0 +1,14 @@
+platform :ios, '9.0'
+
+target 'GroceryShoppingTask' do
+  use_frameworks!
+  
+  pod 'Alamofire'
+  pod 'Kingfisher'
+
+  target 'GroceryShoppingTaskTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

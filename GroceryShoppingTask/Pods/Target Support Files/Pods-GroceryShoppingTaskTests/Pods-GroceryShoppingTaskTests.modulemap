@@ -1,0 +1,6 @@
+framework module Pods_GroceryShoppingTaskTests {
+  umbrella header "Pods-GroceryShoppingTaskTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
