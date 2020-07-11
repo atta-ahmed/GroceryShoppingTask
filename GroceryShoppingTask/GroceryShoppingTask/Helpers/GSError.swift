@@ -10,10 +10,6 @@ import Foundation
 
 
 // Todo:- handle all failuer and errors in webservice
-protocol HandleErrors {
-    func handleError(error: String)
-    func handleFailuer()
-}
 
 //
 enum GroceryError: Error {

@@ -75,12 +75,21 @@ struct UIModelMapper: UIModelMapperProtocol {
     func convertProductUIModelToCartApiModel(products: [ProductUIModel]) -> CartApiModel {
         var productsForApi: [ProductApiModel] = []
         _ = products.map {
-            let element = ProductModel(id: $0.id)
+            let element = ProductModel(id: $0.id ?? 0)
             let productApi = ProductApiModel(quantity: $0.quantity, product: element)
             productsForApi.append(productApi)
         }
         return CartApiModel(id: GroceryAPIConfig.id,
                             products: productsForApi)
+    }
+    func convertProductUIModelToCartParamters(products: [ProductUIModel]) -> [String: Any] {
+        var  paramters = ["id": GroceryAPIConfig.id, "products": []] as [String: Any]
+        _ = products.map {
+            let product = ["id":$0.id ?? 0] as [String: Any]
+            let products = ["quantity": $0.quantity, "product": product] as [String : Any]
+            paramters.updateValue(products, forKey: "products")
+        }
+        return paramters
     }
 
 }

@@ -45,7 +45,8 @@ extension CartUseCase: CartUseCaseProtocol {
         }
     }
     func updateRemoteCart(_ cart: [ProductUIModel], completion: @escaping () -> Void) {
-        let paramters = uiModelMapper.convertProductUIModelToCartApiModel(products: cart)
+//        let paramters = uiModelMapper.convertProductUIModelToCartApiModel(products: cart)
+        let paramters = uiModelMapper.convertProductUIModelToCartParamters(products: cart)
         repositry.updateRemotCart(paramters) {
             completion()
         }

@@ -11,7 +11,7 @@ import Foundation
 protocol  CartRepositryProtocol {
     func fetchLocalCart(completion: @escaping (Error?, [Cart]) -> Void)
     func updateCart(_ cart: Cart, completion: @escaping () -> Void)
-    func updateRemotCart(_ cart: CartApiModel, completion: @escaping ()-> Void)
+    func updateRemotCart(_ paramters: [String: Any], completion: @escaping ()-> Void)
 }
 
 class CartRepositry {
@@ -27,8 +27,8 @@ class CartRepositry {
 }
 
 extension CartRepositry: CartRepositryProtocol {
-    func updateRemotCart(_ cart: CartApiModel, completion: @escaping () -> Void) {
-        remoteDataStore.updateRemoteCart(cart) { (_) in
+    func updateRemotCart(_ paramters: [String: Any], completion: @escaping () -> Void) {
+        remoteDataStore.updateRemoteCart(paramters) { (_) in
             completion()
         }
     }
