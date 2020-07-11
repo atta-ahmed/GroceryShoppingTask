@@ -24,7 +24,7 @@ class CartRemoteDataStore: CartRemoteDataStoreProtocol {
     }
 
     func fetchRemoteCart(completion: @escaping ([Cart]) -> Void) {
-        let params = ["id": "db08520c-c151-11ea-b3de-0242ac130004"] as [String : Any]
+        let params = ["id": GroceryAPIConfig.id] as [String : Any]
         NetworkManager.execute(url: "cart", method: .get, paramter: params) { (response) in
             completion(response)
         }

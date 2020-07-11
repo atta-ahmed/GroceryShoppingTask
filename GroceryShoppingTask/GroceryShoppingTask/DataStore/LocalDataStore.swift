@@ -43,7 +43,6 @@ class LocalDataStore: LocalDataStoreProtocol {
             defaults.encode(for: [cart], using: "allSavedCart")
         }
         completion()
-        print("done")
     }
 
 }

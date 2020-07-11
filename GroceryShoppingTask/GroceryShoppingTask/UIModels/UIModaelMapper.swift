@@ -53,7 +53,7 @@ struct UIModelMapper: UIModelMapperProtocol {
     func convertProductUIModelToCart(model: ProductUIModel) -> Cart {
         let product = Product(id: model.id, imageURL: model.imageURL, name: model.name, pricePerUnit: model.pricePerUnit)
         let newProduct = ProductElement(quantity: model.quantity, product: product)
-        return Cart(id: "db08520c-c151-11ea-b3de-0242ac130004", products: [newProduct])
+        return Cart(id: GroceryAPIConfig.id, products: [newProduct])
     }
 
     func updateQuantityOfProducts(localPoducts: [ProductUIModel], remoteProducts:  [ProductUIModel]) -> [ProductUIModel] {
@@ -74,12 +74,12 @@ struct UIModelMapper: UIModelMapperProtocol {
 
     func convertProductUIModelToCartApiModel(products: [ProductUIModel]) -> CartApiModel {
         var productsForApi: [ProductApiModel] = []
-        products.map {
+        _ = products.map {
             let element = ProductModel(id: $0.id)
             let productApi = ProductApiModel(quantity: $0.quantity, product: element)
             productsForApi.append(productApi)
         }
-        return CartApiModel(id: "752f45b2-f66d-4a3b-a9a8-4bcbf5fff7ef",
+        return CartApiModel(id: GroceryAPIConfig.id,
                             products: productsForApi)
     }
 
