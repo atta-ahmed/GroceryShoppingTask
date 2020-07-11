@@ -8,17 +8,19 @@
 
 import UIKit
 //MARK:- protocol
-protocol CartViewProtocol: AnyObject {
+protocol CartViewProtocol: AnyObject, BadgeNumberProvider {
     func showIndecator()
     func stopIndicator()
     func reloadCartList()
-    func cartUpdated()
+    func gotoPurchase()
 }
 
 
-class CartViewController: UIViewController {
+class CartViewController: UIViewController, BadgeUpdatable {
+    
     //MARK:- outlets
     @IBOutlet weak var cartTableView: UITableView!
+    @IBOutlet weak var purchaseButton: UIButton!
 
     //MARK:- properties
     lazy var boxView: UIView! = { return self.view.newLoadingIndicator() }()
@@ -33,6 +35,9 @@ class CartViewController: UIViewController {
         presenter?.fetchLocalCart()
     }
 
+    @IBAction func purchase(_ sender: UIButton) {
+        presenter?.updateCart()
+    }
     //MARK:- Setup UI
     private func setUpCartTable() {
         cartTableView.register(UINib(nibName: "CartCell", bundle: nil),
@@ -58,9 +63,8 @@ extension CartViewController: CartViewProtocol {
     func reloadCartList() {
         cartTableView.reloadData()
     }
-
-    func cartUpdated() {
-    //
+    func gotoPurchase() {
+        print("")
     }
 }
 
@@ -92,4 +96,5 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func decreseQuantity(_ sender: UIButton) {
         presenter?.didChangeQuantity(whereID: sender.tag, isIncrease: false)
     }
+
 }

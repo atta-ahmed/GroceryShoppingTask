@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol HomeViewProtocol: AnyObject {
+protocol ProductHomeViewProtocol: AnyObject, BadgeNumberProvider {
     func showIndecator()
     func stopIndicator()
     func reloadProductsList()
@@ -16,13 +16,13 @@ protocol HomeViewProtocol: AnyObject {
 }
 
 //MARK:- Setup View
-class HomeViewController: UIViewController {
+class ProductHomeViewController: UIViewController {
 
     //MARK:- outlets
     @IBOutlet weak var shoppingCollectionView: UICollectionView!
     //MARK:- properties
     lazy var boxView: UIView! = { return self.view.newLoadingIndicator() }()
-    var presenter: HomePresenterProtocol?
+    var presenter: ProductHomePresenterProtocol?
 
     //MARK:- LifeCycle
     override func viewDidLoad() {
@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
 }
 
 //MARK:- Handle Collection
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ProductHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter?.numberOfProducts ?? 0
@@ -76,7 +76,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 //MARK:- Handle pagenation
-extension HomeViewController: UIScrollViewDelegate {
+extension ProductHomeViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         loadMoreProducts(scrollView)
     }
@@ -96,7 +96,7 @@ extension HomeViewController: UIScrollViewDelegate {
 }
 
 //MARK:- Handle UI
-extension HomeViewController: HomeViewProtocol {
+extension ProductHomeViewController: ProductHomeViewProtocol {
     /// whene add product to cart
     func cartUpdated() {
         shoppingCollectionView.reloadData()

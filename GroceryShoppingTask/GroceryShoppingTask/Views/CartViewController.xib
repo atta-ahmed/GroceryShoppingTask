@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartViewController" customModule="GroceryShoppingTask" customModuleProvider="target">
             <connections>
                 <outlet property="cartTableView" destination="hzP-6m-gJG" id="vCT-2m-XQr"/>
+                <outlet property="purchaseButton" destination="Gx2-c8-IL0" id="p6J-tb-DuO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,20 +19,37 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hzP-6m-gJG">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hzP-6m-gJG">
+                    <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gx2-c8-IL0">
+                    <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="MDL-xS-7IQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Purchase">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="purchase:" destination="-1" eventType="touchUpInside" id="PH4-bz-tJ3"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Gx2-c8-IL0" firstAttribute="top" secondItem="hzP-6m-gJG" secondAttribute="bottom" id="5Fk-Pm-GIb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Gx2-c8-IL0" secondAttribute="trailing" id="8zw-zD-hds"/>
                 <constraint firstItem="hzP-6m-gJG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BPb-Vr-8op"/>
+                <constraint firstItem="Gx2-c8-IL0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Mxm-1M-5p6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hzP-6m-gJG" secondAttribute="trailing" id="Z6i-9u-zZU"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hzP-6m-gJG" secondAttribute="bottom" id="y2c-CL-ojM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Gx2-c8-IL0" secondAttribute="bottom" id="ca9-tU-IRW"/>
                 <constraint firstItem="hzP-6m-gJG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="yIq-IJ-7xO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="108"/>
+            <point key="canvasLocation" x="137.68115942028987" y="107.8125"/>
         </view>
     </objects>
 </document>

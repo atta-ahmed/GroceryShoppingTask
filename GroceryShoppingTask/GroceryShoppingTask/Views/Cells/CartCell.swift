@@ -24,7 +24,7 @@ class CartCell: UITableViewCell {
     }
 
     /// Configuer cell with UIModel
-    func configeur(cart: CartUiModel) {
+    func configeur(cart: ProductUIModel) {
         
         priceLabel.text = "$\(cart.pricePerUnit ?? 0.0)"
         titleLabel.text = cart.name

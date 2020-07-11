@@ -1,21 +1,22 @@
 //
-//  ShoppingViewControllerTests.swift
+//  ProductHomeViewControllerTests.swift
 //  GroceryShoppingTaskTests
 //
-//  Created by Atta Amed on 7/7/20.
+//  Created by Atta Amed on 7/11/20.
 //  Copyright © 2020 Atta Amed. All rights reserved.
 //
 
+import Foundation
 import XCTest
 @testable import GroceryShoppingTask
 
-class ShoppingViewControllerTests: XCTestCase {
+class ProductHomeViewControllerTests: XCTestCase {
 
-    var shoppingVC: ShoppingViewController?
+    var shoppingVC: ProductHomeViewController?
 
     override func setUp() {
         super.setUp()
-        shoppingVC = ShoppingViewController()
+        shoppingVC = ProductHomeViewController()
     }
 
     override func tearDown() {

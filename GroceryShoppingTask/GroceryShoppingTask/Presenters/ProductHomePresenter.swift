@@ -1,5 +1,5 @@
 //
-//  HomePresnter.swift
+//  ProductHomePresenter.swift
 //  GroceryShoppingTask
 //
 //  Created by Atta Amed on 7/9/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 //MARK:- Protocol
-protocol HomePresenterProtocol {
+protocol ProductHomePresenterProtocol: BadgeNumberManager {
     var numberOfProducts: Int {get}
     func fetchHomeProducts()
     func fetchLocalCart()
@@ -16,25 +16,29 @@ protocol HomePresenterProtocol {
     func didSelectProduct(at index: Int)
 }
 
-class HomePresenter {
+class ProductHomePresenter {
 
     //MARK:- properties
     var offset = 0
     var products: [ProductUIModel] = []
-    let useCase: ProductsUseCase
+    let useCase: ProductsUseCaseProtocol
+    var totalQuantity: String {
+        let count = products.reduce(0) { $0 + $1.quantity }
+        return  count > 0 ? "\(count)" : ""
+    }
 
-    public weak var view: HomeViewProtocol?
+    public weak var view: ProductHomeViewProtocol?
 
     //MARK:- init
-    public init(view: HomeViewProtocol,
-                useCase: ProductsUseCase) {
+    public init(view: ProductHomeViewProtocol,
+                useCase: ProductsUseCaseProtocol) {
         self.view = view
         self.useCase = useCase
     }
 }
 
 //MARK:- Handle UI Logic
-extension HomePresenter: HomePresenterProtocol {
+extension ProductHomePresenter: ProductHomePresenterProtocol {
     var numberOfProducts: Int {
         return products.count
     }
@@ -44,6 +48,7 @@ extension HomePresenter: HomePresenterProtocol {
         useCase.fetchLocalCart(currentProduct: products) { (error, products) in
             self.products = products
             self.view?.reloadProductsList()
+            self.updateBadgeNumber(in: self.view, number: self.totalQuantity)
         }
     }
 
@@ -55,12 +60,14 @@ extension HomePresenter: HomePresenterProtocol {
             self.offset = self.products.count
             self.view?.stopIndicator()
             self.view?.reloadProductsList()
+            self.updateBadgeNumber(in: self.view, number: self.totalQuantity)
         }
     }
     /// Whene Add product to cart
     func updateLocalCart(model: ProductUIModel) {
         useCase.updateLocalCart(model) {
             self.view?.reloadProductsList()
+            self.updateBadgeNumber(in: self.view, number: self.totalQuantity)
         }
     }
 

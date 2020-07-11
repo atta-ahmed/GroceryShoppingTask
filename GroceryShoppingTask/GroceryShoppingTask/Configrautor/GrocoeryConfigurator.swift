@@ -25,7 +25,7 @@ extension GrocoeryConfigurator: GrocoeryConfiguratorProtocol {
     var viewController: UIViewController {
         switch self {
         case .home:
-            let homeViewController = HomeViewController()
+            let homeViewController = ProductHomeViewController()
             let remoteDataStore = ProductRemoteDataStore()
             let localDataStore = LocalDataStore()
             let uiModel = UIModelMapper()
@@ -33,7 +33,7 @@ extension GrocoeryConfigurator: GrocoeryConfiguratorProtocol {
                                                localDataStore: localDataStore)
             let useCase = ProductsUseCase(repositry: repositry,
                                           uiModelMapper: uiModel)
-            let presenter = HomePresenter(view: homeViewController,
+            let presenter = ProductHomePresenter(view: homeViewController,
                                           useCase: useCase)
             homeViewController.presenter = presenter
             return homeViewController

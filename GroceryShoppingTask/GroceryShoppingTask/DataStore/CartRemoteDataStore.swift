@@ -9,14 +9,16 @@
 import Foundation
 protocol CartRemoteDataStoreProtocol {
     func fetchRemoteCart(completion: @escaping ([Cart]) -> Void)
-    func updateRemoteCart(completion: @escaping ([Cart]) -> Void)
+    func updateRemoteCart(_ cart: CartApiModel, completion: @escaping ([Cart]) -> Void)
 }
 
 class CartRemoteDataStore: CartRemoteDataStoreProtocol {
 
-    func updateRemoteCart(completion: @escaping ([Cart]) -> Void) {
-        let params = ["id": "db08520c-c151-11ea-b3de-0242ac130004"] as [String : Any]
-        NetworkManager.execute(url: "cart", method: .post, paramter: params) { (result) in
+    func updateRemoteCart(_ cart: CartApiModel, completion: @escaping ([Cart]) -> Void) {
+        let params = cart.toJSON()
+        let header = ["Content-Type": "application/json"]
+
+        NetworkManager.execute(url: "cart", method: .post, paramter: params, header: header) { (result) in
             completion(result)
         }
     }

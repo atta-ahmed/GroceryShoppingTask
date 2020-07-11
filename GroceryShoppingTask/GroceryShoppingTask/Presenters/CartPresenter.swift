@@ -8,18 +8,23 @@
 
 import Foundation
 //MARK:- Protocol
-protocol CartPresenterProtocol {
+protocol CartPresenterProtocol: BadgeNumberManager {
     var numberOfCart: Int {get}
     func fetchLocalCart()
-    func cart(at index: Int) -> CartUiModel
+    func cart(at index: Int) -> ProductUIModel
     func didChangeQuantity(whereID id: Int, isIncrease: Bool)
+    func updateCart()
 }
 
 class CartPresenter {
 
     //MARK:- properties
-     var cart: [CartUiModel] = []
+     var cart: [ProductUIModel] = []
      let useCase: CartUseCase
+    var totalQuantity: String {
+        let count = cart.reduce(0) { $0 + $1.quantity }
+        return  count > 0 ? "\(count)" : ""
+    }
 
      public weak var view: CartViewProtocol?
 
@@ -45,7 +50,14 @@ extension CartPresenter: CartPresenterProtocol {
             self.cart = cart
             self.view?.stopIndicator()
             self.view?.reloadCartList()
+            self.updateBadgeNumber(in: self.view, number: self.totalQuantity)
         }
+    }
+    func updateCart() {
+        useCase.updateRemoteCart(cart) {
+            self.view?.gotoPurchase()
+        }
+
     }
     /// handle +,- buttons
     func didChangeQuantity(whereID id: Int, isIncrease: Bool) {
@@ -60,7 +72,7 @@ extension CartPresenter: CartPresenterProtocol {
             }
         }
     }
-    func cart(at index: Int) -> CartUiModel {
+    func cart(at index: Int) -> ProductUIModel {
         return cart[index]
     }
 }

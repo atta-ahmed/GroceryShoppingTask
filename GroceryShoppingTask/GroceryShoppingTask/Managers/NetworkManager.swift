@@ -16,9 +16,10 @@ class NetworkManager {
     class func execute<T: Codable>(url: String,
                                    method: HTTPMethod,
                                    paramter: [String: Any],
+                                   header: HTTPHeaders? = nil,
                                    completion: @escaping (T)-> Void) {
 
-        Alamofire.request( GroceryAPIConfig.URL + url, method: method, parameters: paramter, encoding: URLEncoding.default , headers: nil).responseJSON { (responseObject) -> Void in
+        Alamofire.request( GroceryAPIConfig.URL + url, method: method, parameters: paramter, encoding: URLEncoding.methodDependent , headers: header).responseJSON { (responseObject) -> Void in
             print( "url ==> ", GroceryAPIConfig.URL + url)
             print(responseObject)
 

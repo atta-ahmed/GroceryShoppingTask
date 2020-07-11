@@ -12,7 +12,6 @@ protocol UIModelMapperProtocol {
     func convertProductToUIModel(products: [Product]) -> [ProductUIModel]
     func convertCartToProductUIModel(cart: [Cart]) -> [ProductUIModel]
     func convertProductUIModelToCart(model: ProductUIModel) -> Cart
-    func convertCartUIModelToCart(model: CartUiModel) -> Cart
     func updateQuantityOfProducts(localPoducts: [ProductUIModel],
                                   remoteProducts:  [ProductUIModel]) -> [ProductUIModel]
 }
@@ -31,16 +30,9 @@ struct UIModelMapper: UIModelMapperProtocol {
         }
     }
 
-    func convertCartUIModelToCart(model: CartUiModel) -> Cart {
-        let product = Product(id: model.id, imageURL: model.imageURL, name: model.name, pricePerUnit: model.pricePerUnit)
-        let newProduct = ProductElement(quantity: model.quantity, product: product)
-        return Cart(id: "db08520c-c151-11ea-b3de-0242ac130004", products: [newProduct])
-
-    }
-
-    func convertCartToCartUIModel(cart: [Cart]) -> [CartUiModel] {
+    func convertCartToCartUIModel(cart: [Cart]) -> [ProductUIModel] {
         return cart.map {
-            return CartUiModel(id: $0.products.first?.product?.id,
+            return ProductUIModel(id: $0.products.first?.product?.id,
                                   imageURL: $0.products.first?.product?.imageURL,
                                   name: $0.products.first?.product?.name,
                                   pricePerUnit: $0.products.first?.product?.pricePerUnit,
@@ -78,6 +70,17 @@ struct UIModelMapper: UIModelMapperProtocol {
             }
         }
         return updatedProducts
+    }
+
+    func convertProductUIModelToCartApiModel(products: [ProductUIModel]) -> CartApiModel {
+        var productsForApi: [ProductApiModel] = []
+        products.map {
+            let element = ProductModel(id: $0.id)
+            let productApi = ProductApiModel(quantity: $0.quantity, product: element)
+            productsForApi.append(productApi)
+        }
+        return CartApiModel(id: "752f45b2-f66d-4a3b-a9a8-4bcbf5fff7ef",
+                            products: productsForApi)
     }
 
 }
