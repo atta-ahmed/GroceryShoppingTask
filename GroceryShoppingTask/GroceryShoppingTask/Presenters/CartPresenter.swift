@@ -46,7 +46,8 @@ extension CartPresenter: CartPresenterProtocol {
     /// fetch only local data to update quantity
     func fetchLocalCart() {
         self.view?.showIndecator()
-        useCase.fetchLocalCart { (error, cart) in
+        useCase.fetchLocalCart { [weak self] (error, cart) in
+            guard let self = self else { return }
             self.cart = cart
             self.view?.stopIndicator()
             self.view?.reloadCartList()

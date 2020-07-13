@@ -50,7 +50,8 @@ extension ProductsUseCase: ProductsUseCaseProtocol {
 
         repositry.featchProducts(offset: offset) { (error, products) in
             remoteProducts = self.uiModelMapper.convertProductToUIModel(products: products)
-            self.repositry.fetchLocalCart { (error, arrayOfCart) in
+            self.repositry.fetchLocalCart { [weak self] (error, arrayOfCart) in
+                guard let self = self else { return }
                 localPoducts = self.uiModelMapper.convertCartToProductUIModel(cart: arrayOfCart)
             }
 

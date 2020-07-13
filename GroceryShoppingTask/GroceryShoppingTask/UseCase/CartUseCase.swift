@@ -32,7 +32,8 @@ class CartUseCase {
 extension CartUseCase: CartUseCaseProtocol {
 
     func fetchLocalCart(completion: @escaping (Error?, [ProductUIModel]) -> Void) {
-        repositry.fetchLocalCart { (error, arrayOfCart) in
+        repositry.fetchLocalCart { [weak self](error, arrayOfCart) in
+            guard let self = self else { return }
             let cartUiModel = self.uiModelMapper.convertCartToCartUIModel(cart: arrayOfCart)
             completion(nil, cartUiModel)
         }
@@ -46,7 +47,8 @@ extension CartUseCase: CartUseCaseProtocol {
     }
     func updateRemoteCart(_ cart: [ProductUIModel], completion: @escaping ([ProductUIModel]) -> Void) {
         let paramters = uiModelMapper.convertProductUIModelToCartApiModel(products: cart)
-        repositry.updateRemotCart(paramters) { (arrayOfCart) in
+        repositry.updateRemotCart(paramters) { [weak self] (arrayOfCart) in
+            guard let self = self else { return }
             let products = self.uiModelMapper.convertCartToProductUIModel(cart: [arrayOfCart])
             completion(products)
         }

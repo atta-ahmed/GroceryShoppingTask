@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PurchaseViewController" customModule="GroceryShoppingTask" customModuleProvider="target">
             <connections>
+                <outlet property="purchaseTableView" destination="qgR-mI-3vc" id="ZSG-Rv-lbq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

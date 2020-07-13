@@ -45,7 +45,8 @@ extension ProductHomePresenter: ProductHomePresenterProtocol {
 
     /// fetch only local data to update quantity
     func fetchLocalCart() {
-        useCase.fetchLocalCart(currentProduct: products) { (error, products) in
+        useCase.fetchLocalCart(currentProduct: products) { [weak self] (error, products) in
+            guard let self = self else { return }
             self.products = products
             self.view?.reloadProductsList()
             self.updateBadgeNumber(in: self.view, number: self.totalQuantity)
@@ -55,7 +56,8 @@ extension ProductHomePresenter: ProductHomePresenterProtocol {
     /// Get products from api and merge with offline cart to update quantity
     func fetchHomeProducts() {
         view?.showIndecator()
-        useCase.featchData(offset: offset) { (error, products) in
+        useCase.featchData(offset: offset) { [weak self] (error, products) in
+            guard let self = self else { return }
             self.products += products
             self.offset = self.products.count
             self.view?.stopIndicator()
@@ -65,7 +67,8 @@ extension ProductHomePresenter: ProductHomePresenterProtocol {
     }
     /// Whene Add product to cart
     func updateLocalCart(model: ProductUIModel) {
-        useCase.updateLocalCart(model) {
+        useCase.updateLocalCart(model) { [weak self] in
+            guard let self = self else { return }
             self.view?.reloadProductsList()
             self.updateBadgeNumber(in: self.view, number: self.totalQuantity)
         }
