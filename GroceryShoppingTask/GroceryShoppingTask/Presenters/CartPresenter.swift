@@ -13,7 +13,7 @@ protocol CartPresenterProtocol: BadgeNumberManager {
     func fetchLocalCart()
     func cart(at index: Int) -> ProductUIModel
     func didChangeQuantity(whereID id: Int, isIncrease: Bool)
-    func updateCart()
+    func updateRmoteCart()
 }
 
 class CartPresenter {
@@ -53,8 +53,8 @@ extension CartPresenter: CartPresenterProtocol {
             self.updateBadgeNumber(in: self.view, number: self.totalQuantity)
         }
     }
-    func updateCart() {
-        useCase.updateRemoteCart(cart) {
+    func updateRmoteCart() {
+        useCase.updateRemoteCart(cart) { (arrayOfCart) in 
             self.view?.gotoPurchase()
         }
 
@@ -67,7 +67,7 @@ extension CartPresenter: CartPresenterProtocol {
             } else {
                 selectedCart.quantity -= 1
             }
-            useCase.updateCart(selectedCart) {
+            useCase.updateLocalCart(selectedCart) {
                 self.fetchLocalCart()
             }
         }

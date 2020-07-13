@@ -15,7 +15,4 @@ struct ProductUIModel {
     var pricePerUnit: Double?
     var quantity: Int = 0
 
-    func getTotalQuantity() -> Int{
-        return quantity
-    }
 }

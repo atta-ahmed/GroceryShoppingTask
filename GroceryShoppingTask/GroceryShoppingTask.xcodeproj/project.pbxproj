@@ -39,6 +39,10 @@
 		2E833E1D24B9F1F50057D502 /* BadgeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833E1C24B9F1F50057D502 /* BadgeManager.swift */; };
 		2E833E1F24B9F26A0057D502 /* ProductHomeViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833E1E24B9F26A0057D502 /* ProductHomeViewControllerSpy.swift */; };
 		2E833E2124B9F29F0057D502 /* ProductsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833E2024B9F29F0057D502 /* ProductsUseCaseMock.swift */; };
+		2E833E2A24BCB9300057D502 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833E2824BCB9300057D502 /* PurchaseViewController.swift */; };
+		2E833E2B24BCB9300057D502 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E833E2924BCB9300057D502 /* PurchaseViewController.xib */; };
+		2E833E2E24BCCC590057D502 /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833E2C24BCCC590057D502 /* PurchaseCell.swift */; };
+		2E833E2F24BCCC590057D502 /* PurchaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E833E2D24BCCC590057D502 /* PurchaseCell.xib */; };
 		2EDC3A8924B4FAB600944A3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDC3A8824B4FAB600944A3D /* AppDelegate.swift */; };
 		2EDC3A9024B4FAB600944A3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC3A8E24B4FAB600944A3D /* Main.storyboard */; };
 		2EDC3A9224B4FAB700944A3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC3A9124B4FAB700944A3D /* Assets.xcassets */; };
@@ -93,6 +97,10 @@
 		2E833E1C24B9F1F50057D502 /* BadgeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeManager.swift; sourceTree = "<group>"; };
 		2E833E1E24B9F26A0057D502 /* ProductHomeViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHomeViewControllerSpy.swift; sourceTree = "<group>"; };
 		2E833E2024B9F29F0057D502 /* ProductsUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsUseCaseMock.swift; sourceTree = "<group>"; };
+		2E833E2824BCB9300057D502 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		2E833E2924BCB9300057D502 /* PurchaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
+		2E833E2C24BCCC590057D502 /* PurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
+		2E833E2D24BCCC590057D502 /* PurchaseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseCell.xib; sourceTree = "<group>"; };
 		2EDC3A8524B4FAB500944A3D /* GroceryShoppingTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryShoppingTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EDC3A8824B4FAB600944A3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EDC3A8F24B4FAB600944A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -271,6 +279,8 @@
 				2E833DEE24B7A2A70057D502 /* CartViewController.xib */,
 				2E833DF124B7A30C0057D502 /* TabBarController.swift */,
 				2E833DF224B7A30C0057D502 /* TabBarController.xib */,
+				2E833E2824BCB9300057D502 /* PurchaseViewController.swift */,
+				2E833E2924BCB9300057D502 /* PurchaseViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +301,8 @@
 				2EDC3AB924B5177E00944A3D /* ProductCell.xib */,
 				2E833DD824B648E10057D502 /* CartCell.swift */,
 				2E833DD924B648E10057D502 /* CartCell.xib */,
+				2E833E2C24BCCC590057D502 /* PurchaseCell.swift */,
+				2E833E2D24BCCC590057D502 /* PurchaseCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -399,7 +411,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E833E2F24BCCC590057D502 /* PurchaseCell.xib in Resources */,
 				2E833DF024B7A2A70057D502 /* CartViewController.xib in Resources */,
+				2E833E2B24BCB9300057D502 /* PurchaseViewController.xib in Resources */,
 				2EDC3A9524B4FAB700944A3D /* LaunchScreen.storyboard in Resources */,
 				2E833DDB24B648E10057D502 /* CartCell.xib in Resources */,
 				2EDC3ABB24B5177E00944A3D /* ProductCell.xib in Resources */,
@@ -505,6 +519,8 @@
 				2E833DDA24B648E10057D502 /* CartCell.swift in Sources */,
 				2E833E0624B8BC3C0057D502 /* LocalDataStore.swift in Sources */,
 				2E833DCC24B5EC1D0057D502 /* GSAPIConfig.swift in Sources */,
+				2E833E2E24BCCC590057D502 /* PurchaseCell.swift in Sources */,
+				2E833E2A24BCB9300057D502 /* PurchaseViewController.swift in Sources */,
 				2E833E1D24B9F1F50057D502 /* BadgeManager.swift in Sources */,
 				2E833DCA24B5EB730057D502 /* GSError.swift in Sources */,
 				2E833DD724B617F80057D502 /* Extensions.swift in Sources */,

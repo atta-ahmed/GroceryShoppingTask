@@ -14,9 +14,9 @@ protocol ProductRemoteDataStoreProtocol {
 
 class ProductRemoteDataStore: ProductRemoteDataStoreProtocol {
     func fetchHomeProductsDataStore(offset: Int, completion: @escaping ([Product]) -> Void) {
-        let params = ["limit": GroceryAPIConfig.limit,
+        let params = ["limit": APIConfig.limit,
                       "offset": offset] as [String : Any]
-        NetworkManager.execute(url: "products", method: .get, paramter: params) { (response) in
+        NetworkManager.shared.execute(url: "products", method: .get, paramter: params ) { (response) in
             completion(response)
         }
     }

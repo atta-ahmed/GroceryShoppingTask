@@ -36,7 +36,7 @@ class CartViewController: UIViewController, BadgeUpdatable {
     }
 
     @IBAction func purchase(_ sender: UIButton) {
-        presenter?.updateCart()
+        presenter?.updateRmoteCart()
     }
     //MARK:- Setup UI
     private func setUpCartTable() {
@@ -64,7 +64,8 @@ extension CartViewController: CartViewProtocol {
         cartTableView.reloadData()
     }
     func gotoPurchase() {
-        print("")
+        let purchaseVC = PurchaseViewController(nibName: "PurchaseViewController", bundle: nil)
+        self.navigationController?.pushViewController(purchaseVC, animated: true)
     }
 }
 

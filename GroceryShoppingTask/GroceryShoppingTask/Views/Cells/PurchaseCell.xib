@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PurchaseCell" rowHeight="85" id="KGk-i7-Jjw" customClass="PurchaseCell" customModule="GroceryShoppingTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="360" height="85"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kF3-x1-1cA">
+                        <rect key="frame" x="5" y="5" width="75" height="75"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="kF3-x1-1cA" secondAttribute="height" multiplier="1:1" id="IsF-Jj-VJ4"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mCH-X5-q6s">
+                        <rect key="frame" x="85" y="19.5" width="53" height="46"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOQ-lB-07S">
+                                <rect key="frame" x="0.0" y="0.0" width="53" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qR7-v3-iwL">
+                                <rect key="frame" x="0.0" y="25.5" width="53" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1X3-ws-czY">
+                        <rect key="frame" x="328.5" y="32.5" width="11.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="kF3-x1-1cA" secondAttribute="bottom" constant="5" id="IJC-de-YMQ"/>
+                    <constraint firstAttribute="trailing" secondItem="1X3-ws-czY" secondAttribute="trailing" constant="20" id="PQo-DC-wbU"/>
+                    <constraint firstItem="kF3-x1-1cA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="a7S-3z-WCb"/>
+                    <constraint firstItem="mCH-X5-q6s" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gJK-c3-WP4"/>
+                    <constraint firstItem="1X3-ws-czY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="r8J-cl-avW"/>
+                    <constraint firstItem="mCH-X5-q6s" firstAttribute="leading" secondItem="kF3-x1-1cA" secondAttribute="trailing" constant="5" id="tNq-wK-gDD"/>
+                    <constraint firstItem="kF3-x1-1cA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="uDw-QQ-laV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="countLabel" destination="1X3-ws-czY" id="Ddu-Qk-KxO"/>
+                <outlet property="priceLabel" destination="qR7-v3-iwL" id="QzT-I5-r4P"/>
+                <outlet property="productImageView" destination="kF3-x1-1cA" id="VXg-wG-Q6Z"/>
+                <outlet property="titleLabel" destination="EOQ-lB-07S" id="DtO-d6-5eU"/>
+            </connections>
+            <point key="canvasLocation" x="166.66666666666669" y="126.22767857142857"/>
+        </tableViewCell>
+    </objects>
+</document>

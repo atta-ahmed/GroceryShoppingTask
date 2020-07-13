@@ -13,14 +13,18 @@ public typealias VFGNetworkCompletion = ( Codable?, Error? ) -> Void
 /// Api Manager
 class NetworkManager {
 
-    class func execute<T: Codable>(url: String,
+    static let shared: NetworkManager = NetworkManager()
+
+    private init(){
+    }
+    func execute<T: Codable>(url: String,
                                    method: HTTPMethod,
+                                   encoding: ParameterEncoding = URLEncoding.default,
                                    paramter: [String: Any],
                                    header: HTTPHeaders? = nil,
                                    completion: @escaping (T)-> Void) {
-
-        Alamofire.request( GroceryAPIConfig.URL + url, method: method, parameters: paramter, encoding: URLEncoding.methodDependent , headers: header).responseJSON { (responseObject) -> Void in
-            print( "url ==> ", GroceryAPIConfig.URL + url)
+        Alamofire.request( APIConfig.URL + url, method: method, parameters: paramter, encoding: encoding, headers: header).responseJSON { (responseObject) -> Void in
+            print( "url ==> ", APIConfig.URL + url)
             print(responseObject)
 
             if responseObject.result.isSuccess  {
@@ -31,6 +35,7 @@ class NetworkManager {
                         throw GroceryError.FoundNil("no data")
                     }
                     guard let response = try? JSONDecoder().decode(T.self, from: data) else {
+
                         throw GroceryError.FoundNil("decoding fail")
                     }
                     completion(response)

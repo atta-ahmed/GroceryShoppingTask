@@ -10,8 +10,8 @@ import Foundation
 
 protocol CartUseCaseProtocol {
     func fetchLocalCart(completion: @escaping (Error?, [ProductUIModel]) -> Void)
-    func updateCart(_ cart: ProductUIModel, completion: @escaping () -> Void)
-    func updateRemoteCart(_ cart: [ProductUIModel], completion: @escaping () -> Void)
+    func updateLocalCart(_ cart: ProductUIModel, completion: @escaping () -> Void)
+    func updateRemoteCart(_ cart: [ProductUIModel], completion: @escaping ([ProductUIModel]) -> Void)
 
 }
 
@@ -38,17 +38,17 @@ extension CartUseCase: CartUseCaseProtocol {
         }
     }
 
-    func updateCart(_ cart: ProductUIModel, completion: @escaping () -> Void) {
+    func updateLocalCart(_ cart: ProductUIModel, completion: @escaping () -> Void) {
         let selectedCart = uiModelMapper.convertProductUIModelToCart(model: cart)
-        repositry.updateCart(selectedCart) {
+        repositry.updateLocalCart(selectedCart) {
             completion()
         }
     }
-    func updateRemoteCart(_ cart: [ProductUIModel], completion: @escaping () -> Void) {
-//        let paramters = uiModelMapper.convertProductUIModelToCartApiModel(products: cart)
-        let paramters = uiModelMapper.convertProductUIModelToCartParamters(products: cart)
-        repositry.updateRemotCart(paramters) {
-            completion()
+    func updateRemoteCart(_ cart: [ProductUIModel], completion: @escaping ([ProductUIModel]) -> Void) {
+        let paramters = uiModelMapper.convertProductUIModelToCartApiModel(products: cart)
+        repositry.updateRemotCart(paramters) { (arrayOfCart) in
+            let products = self.uiModelMapper.convertCartToProductUIModel(cart: [arrayOfCart])
+            completion(products)
         }
     }
 }
