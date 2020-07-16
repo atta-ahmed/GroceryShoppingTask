@@ -8,11 +8,11 @@
 
 import UIKit
 //MARK:- protocol
-protocol CartViewProtocol: AnyObject, BadgeNumberProvider {
+protocol CartViewProtocol: AnyObject, BadgeNumberProvider, Routable {
+    var navigationConroller: UINavigationController? {get}
     func showIndecator()
     func stopIndicator()
     func reloadCartList()
-    func gotoPurchase()
 }
 
 
@@ -52,6 +52,10 @@ class CartViewController: UIViewController, BadgeUpdatable {
 
 //MARK:- Handle ui
 extension CartViewController: CartViewProtocol {
+    var navigationConroller: UINavigationController? {
+        return self.navigationController
+    }
+
 
     func showIndecator() {
         self.view.showLoadingIndicator(boxView)
@@ -62,10 +66,6 @@ extension CartViewController: CartViewProtocol {
 
     func reloadCartList() {
         cartTableView.reloadData()
-    }
-    func gotoPurchase() {
-        let purchaseVC = PurchaseViewController(nibName: "PurchaseViewController", bundle: nil)
-        self.navigationController?.pushViewController(purchaseVC, animated: true)
     }
 }
 

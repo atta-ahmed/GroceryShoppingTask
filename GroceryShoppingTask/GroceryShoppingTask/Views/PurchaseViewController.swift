@@ -8,6 +8,13 @@
 
 import UIKit
 
+protocol PurchaseViewProtocol: AnyObject, Routable {
+    func showIndecator()
+    func stopIndicator()
+    func reloadCartList()
+    func goToPay()
+}
+
 class PurchaseViewController: UIViewController {
 
     @IBOutlet weak var purchaseTableView: UITableView!
@@ -15,7 +22,7 @@ class PurchaseViewController: UIViewController {
 
     //MARK:- properties
     lazy var boxView: UIView! = { return self.view.newLoadingIndicator() }()
-    var presenter: CartPresenterProtocol?
+    var presenter: PurchasePresenterProtocol?
 
     //MARK:- LifeCycle
     override func viewDidLoad() {
@@ -23,11 +30,11 @@ class PurchaseViewController: UIViewController {
         setUpCartTable()
     }
     override func viewWillAppear(_ animated: Bool) {
-        presenter?.fetchLocalCart()
+//        presenter?.notfiyByCart()
     }
 
-    @IBAction func purchase(_ sender: UIButton) {
-        presenter?.updateRmoteCart()
+    @IBAction func pay(_ sender: UIButton) {
+//        presenter?
     }
     //MARK:- Setup UI
     private func setUpCartTable() {
@@ -44,7 +51,7 @@ class PurchaseViewController: UIViewController {
 //MARK:- tableview
 extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.numberOfCart ?? 0
+        return 0 //presenter?.numberOfCart ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,4 +60,23 @@ extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return UITableViewCell()
     }
+}
+
+extension PurchaseViewController: PurchaseViewProtocol {
+    func showIndecator() {
+        //
+    }
+
+    func stopIndicator() {
+        //
+    }
+
+    func reloadCartList() {
+        //
+    }
+
+    func goToPay() {
+        //
+    }
+
 }

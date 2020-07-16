@@ -8,7 +8,7 @@
 
 import Foundation
 // MARK: - ProductUIModel
-struct ProductUIModel {
+struct ProductUIModel: Codable {
     var id: Int?
     var imageURL: String?
     var name: String?

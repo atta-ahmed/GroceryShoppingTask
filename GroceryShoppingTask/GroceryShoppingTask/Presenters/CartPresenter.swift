@@ -19,21 +19,24 @@ protocol CartPresenterProtocol: BadgeNumberManager {
 class CartPresenter {
 
     //MARK:- properties
-     var cart: [ProductUIModel] = []
-     let useCase: CartUseCase
+    var cart: [ProductUIModel] = []
+    let useCase: CartUseCase
+    var router: RouterProtocol!
     var totalQuantity: String {
         let count = cart.reduce(0) { $0 + $1.quantity }
         return  count > 0 ? "\(count)" : ""
     }
 
-     public weak var view: CartViewProtocol?
+    public weak var view: CartViewProtocol?
 
     //MARK:- Init
-     public init(view: CartViewProtocol,
-                 useCase: CartUseCase) {
+    public init(view: CartViewProtocol,
+                useCase: CartUseCase,
+                router: RouterProtocol) {
         self.view = view
         self.useCase = useCase
-     }
+        self.router = router
+    }
 
 }
 
@@ -56,10 +59,10 @@ extension CartPresenter: CartPresenterProtocol {
     }
     func updateRmoteCart() {
         useCase.updateRemoteCart(cart) { (arrayOfCart) in 
-            self.view?.gotoPurchase()
+            self.router.pushToScreen(with: self.cart)
         }
-
     }
+
     /// handle +,- buttons
     func didChangeQuantity(whereID id: Int, isIncrease: Bool) {
         if var selectedCart = cart.first(where: { $0.id == id }) {

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0077AD24BE5AD300713B01 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0077AC24BE5AD300713B01 /* MainCoordinator.swift */; };
+		2E0077AF24BF87E100713B01 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0077AE24BF87E100713B01 /* Router.swift */; };
+		2E0077B124BFC7A700713B01 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0077B024BFC7A700713B01 /* Interactor.swift */; };
 		2E833DCA24B5EB730057D502 /* GSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DC924B5EB730057D502 /* GSError.swift */; };
 		2E833DCC24B5EC1D0057D502 /* GSAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DCB24B5EC1D0057D502 /* GSAPIConfig.swift */; };
 		2E833DD024B602B80057D502 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833DCF24B602B80057D502 /* Product.swift */; };
@@ -43,6 +46,7 @@
 		2E833E2B24BCB9300057D502 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E833E2924BCB9300057D502 /* PurchaseViewController.xib */; };
 		2E833E2E24BCCC590057D502 /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833E2C24BCCC590057D502 /* PurchaseCell.swift */; };
 		2E833E2F24BCCC590057D502 /* PurchaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E833E2D24BCCC590057D502 /* PurchaseCell.xib */; };
+		2E833E3124BCEB8A0057D502 /* PurchasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E833E3024BCEB8A0057D502 /* PurchasePresenter.swift */; };
 		2EDC3A8924B4FAB600944A3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDC3A8824B4FAB600944A3D /* AppDelegate.swift */; };
 		2EDC3A9024B4FAB600944A3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC3A8E24B4FAB600944A3D /* Main.storyboard */; };
 		2EDC3A9224B4FAB700944A3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC3A9124B4FAB700944A3D /* Assets.xcassets */; };
@@ -65,6 +69,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E0077AC24BE5AD300713B01 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		2E0077AE24BF87E100713B01 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		2E0077B024BFC7A700713B01 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		2E833DC924B5EB730057D502 /* GSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSError.swift; sourceTree = "<group>"; };
 		2E833DCB24B5EC1D0057D502 /* GSAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSAPIConfig.swift; sourceTree = "<group>"; };
 		2E833DCF24B602B80057D502 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -101,6 +108,7 @@
 		2E833E2924BCB9300057D502 /* PurchaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
 		2E833E2C24BCCC590057D502 /* PurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
 		2E833E2D24BCCC590057D502 /* PurchaseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseCell.xib; sourceTree = "<group>"; };
+		2E833E3024BCEB8A0057D502 /* PurchasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePresenter.swift; sourceTree = "<group>"; };
 		2EDC3A8524B4FAB500944A3D /* GroceryShoppingTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryShoppingTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EDC3A8824B4FAB600944A3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EDC3A8F24B4FAB600944A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,6 +148,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E0077AB24BE5AB000713B01 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2E0077AC24BE5AD300713B01 /* MainCoordinator.swift */,
+				2E0077AE24BF87E100713B01 /* Router.swift */,
+				2E0077B024BFC7A700713B01 /* Interactor.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		2E833DC824B5EB410057D502 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +247,7 @@
 		2EDC3A8724B4FAB500944A3D /* GroceryShoppingTask */ = {
 			isa = PBXGroup;
 			children = (
+				2E0077AB24BE5AB000713B01 /* Coordinator */,
 				2E833E0424B8BC0E0057D502 /* Managers */,
 				2E833DF524B7A31F0057D502 /* Configrautor */,
 				2E833DC824B5EB410057D502 /* Helpers */,
@@ -290,6 +309,7 @@
 			children = (
 				2E833DDE24B6533E0057D502 /* CartPresenter.swift */,
 				2E833DF824B7A8F30057D502 /* ProductHomePresenter.swift */,
+				2E833E3024BCEB8A0057D502 /* PurchasePresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -503,12 +523,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E833DEF24B7A2A70057D502 /* CartViewController.swift in Sources */,
+				2E833E3124BCEB8A0057D502 /* PurchasePresenter.swift in Sources */,
 				2E833DF924B7A8F30057D502 /* ProductHomePresenter.swift in Sources */,
 				2E833DDF24B6533E0057D502 /* CartPresenter.swift in Sources */,
 				2E833DF724B7A3470057D502 /* GrocoeryConfigurator.swift in Sources */,
 				2E833E1324B903CE0057D502 /* UIModaelMapper.swift in Sources */,
 				2E833E0324B8A8520057D502 /* ProductsUseCase.swift in Sources */,
 				2E833DD024B602B80057D502 /* Product.swift in Sources */,
+				2E0077AF24BF87E100713B01 /* Router.swift in Sources */,
 				2E833DEB24B7A27C0057D502 /* ProductHomeViewController.swift in Sources */,
 				2EDC3A8924B4FAB600944A3D /* AppDelegate.swift in Sources */,
 				2E833E0024B7CC250057D502 /* ProductRemoteDataStore.swift in Sources */,
@@ -521,10 +543,12 @@
 				2E833DCC24B5EC1D0057D502 /* GSAPIConfig.swift in Sources */,
 				2E833E2E24BCCC590057D502 /* PurchaseCell.swift in Sources */,
 				2E833E2A24BCB9300057D502 /* PurchaseViewController.swift in Sources */,
+				2E0077AD24BE5AD300713B01 /* MainCoordinator.swift in Sources */,
 				2E833E1D24B9F1F50057D502 /* BadgeManager.swift in Sources */,
 				2E833DCA24B5EB730057D502 /* GSError.swift in Sources */,
 				2E833DD724B617F80057D502 /* Extensions.swift in Sources */,
 				2E833E0C24B8F4C30057D502 /* NetworkManager.swift in Sources */,
+				2E0077B124BFC7A700713B01 /* Interactor.swift in Sources */,
 				2EDC3ABA24B5177E00944A3D /* ProductCell.swift in Sources */,
 				2E833E0824B8F2430057D502 /* CartRepositry.swift in Sources */,
 				2E833E0E24B8F4F90057D502 /* LocalManager.swift in Sources */,

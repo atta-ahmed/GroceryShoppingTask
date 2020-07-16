@@ -16,6 +16,7 @@ protocol GrocoeryConfiguratorProtocol {
 enum GrocoeryConfigurator {
     case home
     case cart
+    case purchase
     case tabbarController
 }
 
@@ -47,11 +48,19 @@ extension GrocoeryConfigurator: GrocoeryConfiguratorProtocol {
             let useCase = CartUseCase(repositry: repositry,
                                       uiModelMapper: uiModel)
             let cartViewController = CartViewController()
+            let router = CartViewRouter(view: cartViewController)
+
             let presenter = CartPresenter(view: cartViewController,
-                                          useCase: useCase)
+                                          useCase: useCase, router: router)
             cartViewController.presenter = presenter
             return cartViewController
-
+        case .purchase:
+            let purchaseView = PurchaseViewController()
+            let router = PurchaseViewRouter(view: purchaseView)
+            let presenter = PurchasePresenter(view: purchaseView, router: router)
+             purchaseView.presenter = presenter
+            return purchaseView
+            
         case .tabbarController:
             return TabBarController()
         }
