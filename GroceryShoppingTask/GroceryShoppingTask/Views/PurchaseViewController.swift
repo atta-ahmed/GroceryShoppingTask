@@ -30,7 +30,7 @@ class PurchaseViewController: UIViewController {
         setUpCartTable()
     }
     override func viewWillAppear(_ animated: Bool) {
-//        presenter?.notfiyByCart()
+        presenter?.notfiy()
     }
 
     @IBAction func pay(_ sender: UIButton) {
@@ -51,11 +51,14 @@ class PurchaseViewController: UIViewController {
 //MARK:- tableview
 extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0 //presenter?.numberOfCart ?? 0
+        return presenter?.numberOfCart ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell =  purchaseTableView.dequeueReusableCell(withIdentifier: "PurchaseCell", for: indexPath) as? CartCell {
+        if let cell =  purchaseTableView.dequeueReusableCell(withIdentifier: "PurchaseCell", for: indexPath) as? PurchaseCell {
+            if let cart = presenter?.cart(at: indexPath.row) {
+                cell.configeur(cart: cart)
+            }
             return cell
         }
         return UITableViewCell()
@@ -72,7 +75,7 @@ extension PurchaseViewController: PurchaseViewProtocol {
     }
 
     func reloadCartList() {
-        //
+        purchaseTableView.reloadData()
     }
 
     func goToPay() {

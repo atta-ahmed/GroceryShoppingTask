@@ -10,7 +10,7 @@ import Foundation
 
 protocol PurchasePresenterProtocol {
     var numberOfCart: Int {get}
-    func notfiyByCart()
+    func notfiy()
     func cart(at index: Int) -> ProductUIModel
 }
 
@@ -21,24 +21,29 @@ class PurchasePresenter {
     var router: RouterProtocol
 
     public init(view: PurchaseViewProtocol,
-                router: RouterProtocol) {
-       self.view = view
+                router: RouterProtocol,
+                dataSource: Codable?) {
+
+        self.view = view
         self.router = router
+
+        if let cart = dataSource as? [ProductUIModel] {
+            self.cart = cart
+        }
     }
 }
 
 extension PurchasePresenter: PurchasePresenterProtocol{
     var numberOfCart: Int {
-        //
-        return 5
+        return cart.count
     }
 
-    func notfiyByCart() {
-        //
+    func notfiy() {
+        view.reloadCartList()
     }
 
     func cart(at index: Int) -> ProductUIModel {
-        return cart.first!
+        return cart[index]
     }
 
 

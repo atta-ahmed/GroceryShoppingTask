@@ -14,7 +14,7 @@ protocol Routable {
 }
 
 protocol RouterProtocol: AnyObject {
-    static func instantiateView()-> UIViewController
+    static func instantiateView(dataSource: Codable?)-> UIViewController
     func pushToScreen(with data: Codable?)
 }
 
@@ -27,14 +27,14 @@ class CartViewRouter: RouterProtocol {
     }
 
     func pushToScreen(with data: Codable?) {
-        let destenasion = CartViewRouter.instantiateView()
+        let destenasion = CartViewRouter.instantiateView(dataSource: data)
         if let navigator = self.view.navigationConroller {
             navigator.pushViewController(destenasion, animated: true)
         }
     }
     
-    static func instantiateView() -> UIViewController {
-        return GrocoeryConfigurator.purchase.viewController
+    static func instantiateView(dataSource: Codable?) -> UIViewController {
+        return GrocoeryConfigurator.purchase(dataSource: dataSource).viewController
     }
 
 }
@@ -42,11 +42,9 @@ class CartViewRouter: RouterProtocol {
 class PurchaseViewRouter: RouterProtocol {
 
     var view: PurchaseViewProtocol
-//    var dataSource: Codable?
 
     init(view: PurchaseViewProtocol) {
         self.view = view
-//        self.dataSource = dtaSource
     }
 
     func pushToScreen(with data: Codable?) {
@@ -54,8 +52,8 @@ class PurchaseViewRouter: RouterProtocol {
 //        self.view.navigationController.pushViewController(destenasion, animated: true)
     }
 
-    static func instantiateView() -> UIViewController {
-        return GrocoeryConfigurator.purchase.viewController
+    static func instantiateView(dataSource: Codable?) -> UIViewController {
+        return GrocoeryConfigurator.purchase(dataSource: nil).viewController
     }
 
 }
